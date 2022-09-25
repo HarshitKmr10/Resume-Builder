@@ -9,7 +9,7 @@ const config = require('config')
 //route GET = api/auth
 const User = require('../../models/UserSchema')
 
-router.get("/",jwtVerify, async(req, res)=>{
+router.get("/api/auth",jwtVerify, async(req, res)=>{
     try{
         const user = await User.findById(req.user.id).select("-password");
         res.json(user);
@@ -20,8 +20,10 @@ router.get("/",jwtVerify, async(req, res)=>{
 });
 
 //@route POST api/auth
-router.post("/", [
+router.post("/api/auth", [
 
+     check('email', 'Please include a valid email').isEmail(),
+     check('password', "Password is required")
 ], 
 async (req, res)=>{
     const error = validationResult(req);

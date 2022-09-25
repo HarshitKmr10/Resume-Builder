@@ -6,7 +6,7 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const config = require('config')
 
-router.get("/", [
+router.get("/api/user", [
 
     // user input validation
     check('name', "Name is required").not().isEmpty(),
