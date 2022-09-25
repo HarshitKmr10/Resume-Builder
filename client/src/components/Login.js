@@ -15,7 +15,7 @@ function Login() {
 							</div>
 							<div className="password">
 								<span className="glyphicon glyphicon-lock"></span>
-								<input type="text" password name="password" placeholder="Password" required />
+								<input type="password" name="password" placeholder="Password" required />
 							</div>
 						</div>
 						<button className="submit">Submit</button>

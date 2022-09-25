@@ -6,7 +6,7 @@ import Login from "./components/Login";
 
 function App() {
   return (
-    <div>
+    <>
       <Router>
       <Routes>
         <Route path="/" exact element={<Landing />} />
@@ -14,7 +14,7 @@ function App() {
         <Route path="/:user/:id" exact element={<Resume />} />
       </Routes>
     </Router>
-    </div>
+    </>
   );
 }
 

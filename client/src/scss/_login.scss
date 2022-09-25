@@ -1,7 +1,8 @@
 .login {
     display: flex;
+    align-items: center;
     flex-direction: row-reverse;
-    background-color: #f1f1f1;
+    height: 100vh;
     background-image: url("../../public/img/header-image.jpg");
     object-fit: cover;
     background-position: center;
@@ -10,16 +11,11 @@
 }
 
 .main{
-    width: 500px;
-    height: 500px;
-    padding: 10px 25px 35px 35px;
-    margin-left: 200px;
-    margin-top: 210px;
-    margin-right: 100px;
+    margin-right: 5rem;
+    width: 400px;
     border-radius: 20px;
     font-family: sans-serif;
     font-weight: 700;
-
 }
 
 .card{
@@ -35,7 +31,7 @@
     font-size: 40px;
     color: #642da8;
     letter-spacing: .5px;
-    margin: px;
+    margin-bottom: 1rem;
     font-family: gotham;
 
 }
@@ -51,28 +47,31 @@
     background: none;
     font-size: 18px;
     color: #642da8;
-    padding: 20px 10px 20px 5px;
+    width: 100%;
+    padding: 0.4em 0.6rem;
     letter-spacing: 1px;
 }
 
 .username{
+    @include flex($pos: null);
     margin-bottom: 20px;
     border-bottom: 2px solid #c2c4c3;
-    transition: .5 ease;
+    transition: 0.3s ease-in-out;
 }
 
 .username:hover{
-    border-bottom: 3px solid #642da8;
+    border-bottom: 2px solid #642da8;
 }
 
 .password{
+    @include flex($pos: null);
     margin-bottom: 30px;
     border-bottom: 2px solid #c2c4c3;
-    transition: .5 ease;
+    transition: 0.3s ease-in-out;
 }
 
 .password:hover{
-    border-bottom: 3px solid #642da8;
+    border-bottom: 2px solid #642da8;
 }
 
 .submit{
