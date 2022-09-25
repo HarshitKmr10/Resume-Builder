@@ -8,99 +8,101 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-}
 
-.main{
-    margin-right: 5rem;
-    width: 400px;
-    border-radius: 20px;
-    font-family: sans-serif;
-    font-weight: 700;
-}
 
-.card{
-    padding: 20px;
-    box-sizing: 100px 200px;
- 
-    background-color: #fff;
-    box-shadow: 0px 0px 0.5rem rgba(149,157,165,0.2) ;
-}
+    .main {
+        margin-right: 5rem;
+        width: 400px;
+        border-radius: 20px;
+        font-family: sans-serif;
+        font-weight: 700;
+    }
 
-.title{
-    text-align: center;
-    font-size: 40px;
-    color: #642da8;
-    letter-spacing: .5px;
-    margin-bottom: 1rem;
-    font-family: gotham;
+    .card {
+        padding: 20px;
+        box-sizing: 100px 200px;
 
-}
+        background-color: #fff;
+        box-shadow: 0px 0px 0.5rem rgba(149, 157, 165, 0.2);
+    }
 
-.credentials{
-    width: 100%;
-    padding: 2px 5px 0px 5px;
-}
+    .title {
+        text-align: center;
+        font-size: 40px;
+        color: #642da8;
+        letter-spacing: .5px;
+        margin-bottom: 1rem;
+        font-family: gotham;
 
-.credentials input{
-    border : none;
-    outline: none;
-    background: none;
-    font-size: 18px;
-    color: #642da8;
-    width: 100%;
-    padding: 0.4em 0.6rem;
-    letter-spacing: 1px;
-}
+    }
 
-.username{
-    @include flex($pos: null);
-    margin-bottom: 20px;
-    border-bottom: 2px solid #c2c4c3;
-    transition: 0.3s ease-in-out;
-}
+    .credentials {
+        width: 100%;
+        padding: 2px 5px 0px 5px;
+    }
 
-.username:hover{
-    border-bottom: 2px solid #642da8;
-}
+    .credentials input {
+        border: none;
+        outline: none;
+        background: none;
+        font-size: 18px;
+        color: #642da8;
+        width: 100%;
+        padding: 0.4em 0.6rem;
+        letter-spacing: 1px;
+    }
 
-.password{
-    @include flex($pos: null);
-    margin-bottom: 30px;
-    border-bottom: 2px solid #c2c4c3;
-    transition: 0.3s ease-in-out;
-}
+    .username {
+        @include flex($pos: null);
+        margin-bottom: 20px;
+        border-bottom: 2px solid #c2c4c3;
+        transition: 0.3s ease-in-out;
+    }
 
-.password:hover{
-    border-bottom: 2px solid #642da8;
-}
+    .username:hover {
+        border-bottom: 2px solid #642da8;
+    }
 
-.submit{
-    outline: none;
-    border: none;
-    width: 100%;
-    border-radius: 30px;
-    color: #fff;
-    font-size: 20px;
-    font-weight: 700;
-    text-align: center;
-    background-image: linear-gradient(to right, #642da8 0%,#29323c 51%, #485563 100%);
-    background-size: 200%;
-    box-shadow: 3px 3px 8px #b1b1b1, -3px -3px 8px #fff;
-    transition: .5 ease;
+    .password {
+        @include flex($pos: null);
+        margin-bottom: 30px;
+        border-bottom: 2px solid #c2c4c3;
+        transition: 0.3s ease-in-out;
+    }
 
-}
+    .password:hover {
+        border-bottom: 2px solid #642da8;
+    }
 
-.submit:hover{
-    background-position: right;
+    .submit {
+        outline: none;
+        border: none;
+        width: 100%;
+        border-radius: 30px;
+        color: #fff;
+        font-size: 20px;
+        font-weight: 700;
+        text-align: center;
+        background-image: linear-gradient(to right, #642da8 0%, #29323c 51%, #485563 100%);
+        background-size: 200%;
+        box-shadow: 3px 3px 8px #b1b1b1, -3px -3px 8px #fff;
+        transition: .5 ease;
 
-}
-.link{
-    margin: 20px;
-    text-align: center;
-}
+    }
 
-.link a{
-    color: rgb(247, 124, 42);
-    font-size: 15px;
-    text-decoration: none;
+    .submit:hover {
+        background-position: right;
+
+    }
+
+    .link {
+        margin: 20px;
+        text-align: center;
+    }
+
+    .link a {
+        color: rgb(247, 124, 42);
+        font-size: 15px;
+        text-decoration: none;
+    }
 }
