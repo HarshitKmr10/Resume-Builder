@@ -1,6 +1,11 @@
+import Resume from "./components/Resume";
+import "./scss/style.scss";
+
 function App() {
   return (
-    <div>Hello Coder</div>
+    <div>
+      <Resume />
+    </div>
   );
 }
 
