@@ -1,14 +1,10 @@
-import React from 'react'
+import React, { useId } from 'react'
 
 const Page = () => {
-
-  function handleDrop(e) {
-    e.preventDefault();
-    // console.log(e)
-  }
+  const pageId = useId();
 
   return (
-    <div className='page' onDrop={handleDrop} onDragOver={e => e.preventDefault()}></div>
+    <div id={pageId} className='page' onDragOver={e => e.preventDefault()}></div>
   )
 }
 

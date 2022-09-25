@@ -1,5 +1,4 @@
 import React from 'react'
-import '../index.css';
 
 function Landing() {
   return (
@@ -7,7 +6,7 @@ function Landing() {
         <div className="navbar container">
             <div className="logo">Resume Builder</div>
             <ul className="nav-items">
-                <div className="sign-in btn btn-secondary">sign in</div>
+                <div className="sign-in btn btn-secondary">Log in</div>
                 <div className="getting-started-today btn btn-primary">Get started today</div>
             </ul>
         </div>

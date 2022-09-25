@@ -1,14 +1,16 @@
-import Resume from "./components/Resume";
 import "./scss/style.scss";
-import "./index.css";
 import Landing from "./components/Landing"
+import Resume from "./components/Resume";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
 function App() {
   return (
-    <div>
-      <Landing />
-      {/* <Resume /> */}
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" exact element={<Landing />} />
+        <Route path="/:user/:id" exact element={<Resume />} />
+      </Routes>
+    </Router>
   );
 }
 

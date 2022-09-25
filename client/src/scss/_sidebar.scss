@@ -1,4 +1,56 @@
 .sidebar {
   width: $sidebar-width;
   background-color: white;
+
+  input,
+  select {
+    padding: 0.2rem 0.75rem;
+    width: 100px;
+  }
+
+  div:first-child {
+    padding-block: 0.5rem;
+    text-align: center;
+    color: $primary;
+    border-bottom: 2px solid $primary;
+  }
+
+  &>div:not(:last-child) {
+    margin-bottom: 0.75rem;
+  }
+
+  &>div {
+    padding-inline: 1rem;
+  }
+
+  .font-styles {
+    @include flex($gap: 0.5rem);
+
+    span {
+      @include flex;
+      height: 1.75rem;
+      aspect-ratio: 1;
+      cursor: pointer;
+
+      * {
+        pointer-events: none;
+      }
+
+      &:hover {
+        background-color: rgb(246, 242, 242);
+      }
+
+      &.active {
+        background-color: $primary-light;
+      }
+    }
+  }
+}
+
+.form-group {
+  // @include flex($pos: null, $gap: 0.25rem, $col: true);
+  display: grid;
+  gap: 0.2rem;
+  align-items: center;
+  grid-template-columns: repeat(2, 1fr);
 }

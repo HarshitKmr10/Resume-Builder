@@ -1,4 +1,13 @@
 .element {
     position: absolute;
     transform: translate(-50%, -50%);
+
+    &.active {
+        outline: 1.5px dashed $primary;
+    }
+
+    [contenteditable]:focus {
+        outline: 0px solid transparent;
+    }
 }
+
