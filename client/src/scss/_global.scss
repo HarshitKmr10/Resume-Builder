@@ -12,6 +12,7 @@ body {
 }
 
 button {
+    @include flex($gap: 0.25rem);
     padding: 0.45em 1.3em;
     font-weight: bold;
     font-size: 0.9rem;

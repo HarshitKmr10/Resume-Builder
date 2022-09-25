@@ -14,7 +14,7 @@ app.get("/", (req, res)=> console.log("API running"))
 app.get("/api/user", require('./routes/api/user'));
 app.get("/api/auth", require('./routes/api/auth'));
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3030;
 
 //listen
 app.listen(PORT, ()=> console.log(`Server running on the port ${PORT}`))

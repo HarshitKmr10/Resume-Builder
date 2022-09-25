@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const TextElement = () => {
+
+  const [isContentEditable, setIsContentEditable] = useState(false);
+
   return (
-    <pre>Some Text</pre>
+    <pre contentEditable={isContentEditable}
+     onDoubleClick={() => setIsContentEditable(true)}
+     onBlur={() => setIsContentEditable(false)}>Some Text</pre>
   )
 }
 
