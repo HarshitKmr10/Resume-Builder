@@ -9,5 +9,11 @@
     [contenteditable]:focus {
         outline: 0px solid transparent;
     }
+
+    img {
+        display: block;
+        height: 100px;
+        width: 100px;
+    }
 }
 

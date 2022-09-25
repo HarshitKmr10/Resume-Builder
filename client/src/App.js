@@ -7,15 +7,13 @@ import Login from "./components/Login";
 function App() {
   return (
     <div>
-      {/* <Landing /> */}
-      {/* <Resume /> */}
-      <Login />
-      {/* <Router>
+      <Router>
       <Routes>
         <Route path="/" exact element={<Landing />} />
+        <Route path="/login" exact element={<Login />} />
         <Route path="/:user/:id" exact element={<Resume />} />
       </Routes>
-    </Router> */}
+    </Router>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import ReactDOM from "react-dom/client"
 import { useResume } from '../contexts/ResumeProvider'
+import ImageSidebar from './ImageSidebar'
 import TextSidebar from "./TextSidebar"
 
 const Sidebar = () => {
@@ -17,13 +18,17 @@ const Sidebar = () => {
 
     if (!activeElementId) {
       sidebarRoot.render("Add or Click on an element to edit it's style");
-      return; 
+      return;
     }
-    
+
     const type = document.getElementById(activeElementId).getAttribute("element-type");
     switch (type) {
       case "text":
-        sidebarRoot.render(<TextSidebar activeElementId={activeElementId} 
+        sidebarRoot.render(<TextSidebar activeElementId={activeElementId}
+          setActiveElementId={setActiveElementId} />);
+        break;
+      case "image":
+        sidebarRoot.render(<ImageSidebar activeElementId={activeElementId}
           setActiveElementId={setActiveElementId} />);
         break;
       default:
