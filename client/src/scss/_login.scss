@@ -1,0 +1,116 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    flex-direction: row-reverse;
+    // align-items: center;
+    // color: #642da8;
+    background-color: #f1f1f1;
+    // justify-content:flex ;
+    background-image: url("../../public/img/header-image.jpg");
+    object-fit: cover;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.main{
+    width: 500px;
+    height: 500px;
+    padding: 10px 25px 35px 35px;
+    margin-left: 200px;
+    margin-top: 210px;
+    margin-right: 100px;
+    border-radius: 20px;
+    font-family: sans-serif;
+    font-weight: 700;
+
+}
+
+.card{
+    padding: 20px;
+    box-sizing: 100px 200px;
+ 
+    background-color: #fff;
+    box-shadow: 0px 0px 0.5rem rgba(149,157,165,0.2) ;
+}
+
+.title{
+    text-align: center;
+    font-size: 40px;
+    color: #642da8;
+    letter-spacing: .5px;
+    margin: px;
+    font-family: gotham;
+
+}
+
+.credentials{
+    width: 100%;
+    padding: 2px 5px 0px 5px;
+}
+
+.credentials input{
+    border : none;
+    outline: none;
+    background: none;
+    font-size: 18px;
+    color: #642da8;
+    padding: 20px 10px 20px 5px;
+    letter-spacing: 1px;
+}
+
+.username{
+    margin-bottom: 20px;
+    border-bottom: 2px solid #c2c4c3;
+    transition: .5 ease;
+}
+
+.username:hover{
+    border-bottom: 3px solid #642da8;
+}
+
+.password{
+    margin-bottom: 30px;
+    border-bottom: 2px solid #c2c4c3;
+    transition: .5 ease;
+}
+
+.password:hover{
+    border-bottom: 3px solid #642da8;
+}
+
+.submit{
+    outline: none;
+    border: none;
+    width: 100%;
+    border-radius: 30px;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    background-image: linear-gradient(to right, #642da8 0%,#29323c 51%, #485563 100%);
+    background-size: 200%;
+    box-shadow: 3px 3px 8px #b1b1b1, -3px -3px 8px #fff;
+    transition: .5 ease;
+
+}
+
+.submit:hover{
+    background-position: right;
+
+}
+.link{
+    margin: 20px;
+    text-align: center;
+}
+
+.link a{
+    color: rgb(247, 124, 42);
+    font-size: 15px;
+    text-decoration: none;
+}
