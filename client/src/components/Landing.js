@@ -11,7 +11,7 @@ function Landing() {
 				<div className="logo">Resume Builder</div>
 				<ul className="nav-items">
 					<div className="sign-in btn btn-secondary" onClick={() => navigate("/login")}>Log in</div>
-					<div className="getting-started-today btn btn-primary" onClick={() => navigate("signup")}>
+					<div className="getting-started-today btn btn-primary" onClick={() => navigate("/signup")}>
 						Get started today
 					</div>
 				</ul>
