@@ -1,0 +1,212 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+/* ############### utility classes  ################ */
+.container{
+    max-width: 1440px;
+    width: 85%;
+    margin: auto;
+}
+
+.btn{
+    display: inline-block;
+    padding: 0.8rem 1.2rem;
+    border-radius: 10em;
+    cursor: pointer;
+}
+
+.btn-primary{
+    background-color: rgb(88, 88, 221);
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255/var(--tw-text-opacity));
+    --tw-bg-opacity: 1;
+    background-color: rgb(37 99 235/var(--tw-bg-opacity));
+    font-weight: 500;
+    font-size: large;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.btn-primary:hover{
+    background-color: rgb(9, 9, 239);
+}
+
+.btn-secondary{
+    font-size: large;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.btn-secondary:hover{
+    background-color: #efffff;
+}
+
+
+/* ################# header styling ############## */
+
+
+body{
+    position: relative;
+}
+
+.header{
+    height: 100vh;
+    /* background: url("../public/img/header-image.jpg"); */
+    object-fit: cover;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
+/* #################### navbar styling ################################ */
+
+.navbar{
+    display: flex;
+    margin-top: 5vh;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 3rem;
+    position: absolute;
+    /* background-color: beige; */
+    left: 7vw;
+    z-index: 10;
+    /* box-shadow: 8px 8px 6px #888888; */
+}
+
+.navbar .nav-items{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .nav-items .btn{
+    margin: 0 15px;
+}
+
+.navbar .nav-items .btn-secondary{
+    background-color: #333;
+    color: #fff;
+}
+
+.navbar .nav-items .btn-secondary:hover{
+    background-color: #000;
+}
+
+
+.logo{
+    font-weight: 800;
+    font-size: xx-large;
+    padding: 2px 20px;
+    color: #444
+}
+
+
+
+/* ######################### main-content styling ############################### */
+
+.header .main-content{
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    /* background: linear-gradient(rgba(223, 175, 175, 0.2),rgba(205, 186, 186, 0.2)); */
+}
+
+.header .main-intro{
+    margin: 30px;
+    font-size: x-large;
+}
+
+.header .main-content .main-intro span{
+    color: rgb(53, 69, 215);
+}
+
+.header .secondary-intro{
+    margin: 40px;
+    font-size: large;
+    font-weight: 600;
+    color: #333;
+}
+
+.header .main-content .btn{
+    margin: 10px;
+}
+
+.header .main-content .btn-secondary{
+    margin: 10px;
+    background-color: #333;
+    color: #fff;
+    font-weight: 600;
+    transition: background-color 0.5s easy-in-out;
+}
+
+.header .main-content .btn-secondary:hover{
+    background-color: #111;
+}
+
+
+/* ######################## responsive design ######################### */
+
+@media only screen and (max-width: 768px) {
+    .navbar .logo{
+        font-size: medium;
+    }
+
+    
+    .navbar .nav-items .btn{
+        font-size: medium;
+        font-weight: 300;
+        margin: 0 7px;
+    }
+
+
+}
+
+@media only screen and (max-width: 668px) {
+    .navbar{
+        display: block;
+        text-align: center;
+    }
+
+    .navbar .nav-items{
+        padding : 25px;
+    }
+
+
+
+    .header .main-intro{
+        font-size: medium;
+    }
+
+    .header .secondary-intro{
+        display: none;
+    }
+
+    .main-content{
+        position: relative;
+    }
+
+    .navbar{
+        position: relative;
+    }
+
+    .navbar .nav-items .btn{
+        font-size: small;
+    }
+
+    .header .btn{
+        font-size: small;
+    }
+
+}
+
+
+
