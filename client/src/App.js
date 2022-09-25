@@ -1,11 +1,14 @@
+import Resume from "./components/Resume";
+import "./scss/style.scss";
 import "./index.css";
-import Header from "./components/Header";
+import Landing from "./components/Landing"
 
 function App() {
   return (
-    <>
-      <Header/>
-    </>
+    <div>
+      <Landing />
+      {/* <Resume /> */}
+    </div>
   );
 }
 

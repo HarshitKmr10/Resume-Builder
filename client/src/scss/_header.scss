@@ -1,0 +1,23 @@
+header {
+    @include flex($pos: space-between);
+    padding: 0 2rem;
+    height: $header-height;
+    background-color: $primary;
+    color: white;
+}
+
+.element-btn-group {
+    @include flex($pos: null);
+    height: 100%;
+
+    & > div {
+        @include flex($gap: 0.25rem);
+        height: 100%;
+        padding: 0 0.75rem;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $secondary;
+        }
+    }
+}

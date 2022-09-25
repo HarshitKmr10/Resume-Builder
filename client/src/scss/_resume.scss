@@ -1,0 +1,14 @@
+.resume {
+  @include flex($pos: null);
+  height: calc(100vh - $header-height);
+
+  &>div {
+    height: 100%;
+  }
+
+  .drop-area {
+    @include flex;
+    flex-grow: 1;
+    overflow: auto;
+  }
+}
