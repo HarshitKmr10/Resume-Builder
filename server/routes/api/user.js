@@ -61,10 +61,11 @@ router.get("/api/user", [
             {expiresIn: 360000},
             (err, token)=>{
                 if(err) throw err;
-                res.json({token})
+                res.json({success:true,token})
             })
     }catch(err){
-        console.log(err);
+        console.error(error.message);
+        res.status(500).json({success: false, msg: "Server Error"})
     }
 });
 

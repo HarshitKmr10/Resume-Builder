@@ -21,7 +21,7 @@ const userSchema = new mongoose.Schema({
   },
    workExperience: [ 
       {   
-          title: {
+          designation: {
               type: String,
               required: true
           },
@@ -56,7 +56,27 @@ const userSchema = new mongoose.Schema({
        required: true
       },
     }
-   ]
+   ],
+   projects: [
+    {
+    title:{
+      type: String,
+      required: true
+    },
+    detail:{
+      type: String,
+      required:true
+    }
+  }
+],
+skills:[
+  {
+  title:{
+    type:String,
+    required: true
+  }
+}
+]
 })
 
 module.exports = User = mongoose.model('UserSchema', userSchema);

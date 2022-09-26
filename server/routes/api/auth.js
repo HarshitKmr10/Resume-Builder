@@ -9,7 +9,7 @@ const config = require('config')
 //route GET = api/auth
 const User = require('../../models/UserSchema')
 
-router.get("/api/auth",jwtVerify, async(req, res)=>{
+router.get("/api/auth", jwtVerify, async(req, res)=>{
     try{
         const user = await User.findById(req.user.id).select("-password");
         res.json(user);
