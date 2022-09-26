@@ -26,7 +26,7 @@ function Landing() {
 					<p>Most QR code based resume building software are accurate, but hard to use. We make it user-friendly and easy to use.</p>
 				</div>
 
-				<div className="btn btn-primary" onClick={() => navigate("/chaitanyagiri/1")}>Build your resume</div>
+				<div className="btn btn-primary" onClick={() => navigate("/chaitanyagiri/633187b807ef40871f00762a")}>Build your resume</div>
 				<div className="btn btn-secondary" onClick={() => navigate("/templates")}>Browse Templates</div>
 			</div>
 

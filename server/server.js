@@ -1,7 +1,11 @@
 const express = require('express');
 const connectDB = require('./config/db');
-const app = express();
 const cors = require('cors')
+const config = require('config');
+const fileUpload = require('express-fileupload');
+
+const app = express();
+
 const corsOptions = {
     origin : '*',
     credentials: true,
@@ -11,8 +15,16 @@ const corsOptions = {
 //connecting to the database
 connectDB()
 
+const clientUrl = config.get("clientURL");
+
+app.use(cors({
+  origin: clientUrl,
+  optionSuccessStatus: 200
+}))
+
 //Init middleware
 app.use(express.json({extended: false}));
+app.use(fileUpload());
 
 //cors 
 app.use(cors(corsOptions))

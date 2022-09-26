@@ -4,6 +4,25 @@ header {
     height: $header-height;
     background-color: $primary;
     color: white;
+
+    &>div:last-child {
+        @include flex($pos: null, $gap: 1rem);
+
+        input {
+            width: clamp(100px, 150px, 200px);
+            padding: 0.2em 0.5em;
+            font-size: 1rem;
+            font-weight: 500;
+            color: white;
+            outline: none;
+            border: none;
+            background: transparent;
+
+            &:focus {
+                outline: 1px solid white;
+            }
+        }
+    }
 }
 
 .element-btn-group {
