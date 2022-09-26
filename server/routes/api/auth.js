@@ -26,9 +26,7 @@ router.post("/api/auth", [
      check('password', "Password is required").exists()
 ], 
 async (req, res)=>{
-    // let success = false;
     const error = validationResult(req);
-    let success= false;
     if(!error.isEmpty()){
         return res.status(400).json({error: error.array()})
     }
@@ -57,16 +55,14 @@ async (req, res)=>{
         };
         jwt.sign(payload,
             config.get('jwtSecret'),
-            {success: true},
             {expiresIn: 360000},
             (err, token)=>{
                 if(err) throw err;
-                res.json({success,token});
-            
+                res.json({success:true, token});
             });
     }catch(err){
         console.error(error.message);
-        res.status(500).send("Server error")
+        res.status(500).json({success: false, msg: "Server Error"})
     }
 }
 )

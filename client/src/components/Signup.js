@@ -1,6 +1,17 @@
 import React from 'react'
 
 const Signup = () => {
+    const [credentials, setCredentials] = useState({})
+    const handleSubmit = async (e) =>{
+        e.preventDefault();
+        const response = await fetch("http://localhost:3030/api/user", {
+            method: 'GET',
+            headers:{
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({name, email, password, workExperince, education})
+        })
+    }
   return (
     <>
         <div className="main">

@@ -1,9 +1,9 @@
-import React from 'react';
-import { Link } from "react-router-dom";
+import React , {useState} from 'react';
+import { json, Link, useNavigate } from "react-router-dom";
 
 function Login(props) {
     const [credentials, setCredentials] = useState({email:"", password:""});
-
+    const navigate = useNavigate();
 	const handleSubmit = async (e) =>{
 		e.preventDefault();
 		const response = await fetch("http://localhost:3030/api/auth", {
@@ -15,10 +15,20 @@ function Login(props) {
 		});
 		const json = await response.json()
 		console.log(json);
+
+		if(json.success){
+		  //saving the jwt token into the localstorage
+		  localStorage.setItem('token', json.authtoken);
+		  //redirects towards home route
+		  navigate("/");
+		}else{
+			alert("Invalid credentials!")
+		}
 	}
 	const onChange = (e) =>{
 		setCredentials({...credentials, [e.target.name]: e.target.value})
 	}
+
 	return (
 		<div className='login'>
 			<div className="main">
