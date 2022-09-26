@@ -4,6 +4,7 @@ import Resume from "./components/Resume";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import Accounts from "./components/Accounts";
 
 function App() {
   return (
@@ -14,6 +15,8 @@ function App() {
         <Route path="/login" exact element={<Login />} />
         <Route path="/signup" exact element={<Signup/>} />
         <Route path="/:user/:id" exact element={<Resume />} />
+        <Route path="/accounts" exact element={<Accounts/>} />
+
       </Routes>
     </Router>
     </>
