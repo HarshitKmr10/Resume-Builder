@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import ReactDOM from "react-dom/client"
 import { useResume } from '../contexts/ResumeProvider'
 import ImageSidebar from './ImageSidebar'
+import ShapeSidebar from './ShapeSidebar'
 import TextSidebar from "./TextSidebar"
 
 const Sidebar = () => {
@@ -29,6 +30,10 @@ const Sidebar = () => {
         break;
       case "image":
         sidebarRoot.render(<ImageSidebar activeElementId={activeElementId}
+          setActiveElementId={setActiveElementId} />);
+        break;
+      case "shape":
+        sidebarRoot.render(<ShapeSidebar activeElementId={activeElementId}
           setActiveElementId={setActiveElementId} />);
         break;
       default:

@@ -18,9 +18,14 @@ app.use(express.json({extended: false}));
 app.use(cors(corsOptions))
 
 app.get("/", (req, res)=> console.log("API running"))
+
 //Defining the routes here
 app.get("/api/user", require('./routes/api/user'));
+
 app.post("/api/auth", require('./routes/api/auth'));
+
+app.use("/api/", require('./routes/api/resume'));
+
 
 const PORT = process.env.PORT || 3030;
 

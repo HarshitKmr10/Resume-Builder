@@ -7,6 +7,7 @@ import TextElement from './TextElement';
 import { createNewElement } from '../utils/helper';
 import { useResume } from '../contexts/ResumeProvider';
 import ImageElement from './ImageElement';
+import ShapeElement from './ShapeElement';
 
 const Header = () => {
 
@@ -45,13 +46,23 @@ const Header = () => {
     reader.readAsDataURL(file);
   }
 
+  function addShape() {
+    let activePage = document.querySelector(".page.active");
+    if (!activePage) activePage = document.querySelector(".page");
+
+    const element = createNewElement(activePage, "shape", setActive);
+    ReactDOM.createRoot(element).render(<ShapeElement />);
+    activePage.appendChild(element);
+    setActive(element.id);
+  }
+
   return (
     <header>
       <div className='element-btn-group'>
         <div onClick={addText}>
           <FiType />
         </div>
-        <div>
+        <div onClick={addShape}>
           <BiRectangle />
         </div>
         <div onClick={openFileExplorer}>
