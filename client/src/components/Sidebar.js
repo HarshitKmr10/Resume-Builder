@@ -4,8 +4,9 @@ import { useResume } from '../contexts/ResumeProvider'
 import ImageSidebar from './ImageSidebar'
 import ShapeSidebar from './ShapeSidebar'
 import TextSidebar from "./TextSidebar"
+import DefaultSidebar from "./DefaultSidebar"
 
-const Sidebar = () => {
+const Sidebar = ({ qrCodeSrc, resumeName }) => {
 
   const { activeElementId, setActiveElementId } = useResume();
   const sidebarRef = useRef();
@@ -18,7 +19,7 @@ const Sidebar = () => {
     }
 
     if (!activeElementId) {
-      sidebarRoot.render("Add or Click on an element to edit it's style");
+      sidebarRoot.render(<DefaultSidebar src={qrCodeSrc} name={resumeName} />);
       return;
     }
 
@@ -37,9 +38,10 @@ const Sidebar = () => {
           setActiveElementId={setActiveElementId} />);
         break;
       default:
+        sidebarRoot.render(<DefaultSidebar src={qrCodeSrc} name={resumeName} />);
         break;
     }
-  }, [sidebarRoot, activeElementId, setActiveElementId])
+  }, [sidebarRoot, activeElementId, setActiveElementId, qrCodeSrc, resumeName])
 
   return (
     <div id='sidebar' className='sidebar' ref={sidebarRef}></div>

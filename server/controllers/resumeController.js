@@ -2,11 +2,55 @@ const User = require('../models/UserSchema');
 const Resume = require('../models/resumeSchema');
 const QRCode = require('qrcode');
 const fs = require('fs');
+const config = require('config');
+
+const clientUrl = config.get("clientURL");
+const qrCodeDir = `../client/public/img/qrcodes/`;
+const uploadsDir = `../client/public/img/uploads/`;
 
 // create qrcode directory if doesn't exists
-const qrCodeDir = `../client/public/img/qrcodes/`;
 if (!fs.existsSync(qrCodeDir)) {
   fs.mkdirSync(qrCodeDir, { recursize: true });
+}
+
+// create uploads directory if doesn't exists
+if (!fs.existsSync(uploadsDir)) {
+  fs.mkdirSync(uploadsDir, { recursize: true });
+}
+
+// get all resume
+exports.getAllResumes = async (req, res) => {
+  const resumes = await Resume.find();
+
+  res.status(200).json({
+    success: true,
+    resumes
+  });
+}
+
+// get resume by id
+exports.getResumeById = async (req, res) => {
+  try {
+    const resume = await Resume.findById(req.params.id);
+
+    if (!resume) {
+      res.status(400).json({
+        success: false,
+        message: "Resume Not Found"
+      });
+      return;
+    }
+
+    res.status(200).json({
+      success: true,
+      resume
+    })
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Resume Not Found"
+    })
+  }
 }
 
 // get all public resumes / templates
@@ -38,20 +82,21 @@ exports.getUserResumes = async (req, res) => {
   })
 }
 
-function generateQrCode(id, link) {
+function generateQrCode(id, ownerUserName) {
   const path = `${qrCodeDir}/${id}.png`;
+  const link = `${clientUrl}/${ownerUserName}/${id}`;
   QRCode.toFile(path, link);
   return path;
 }
 
 // save resume
 exports.saveResume = async (req, res) => {
-  const { link, ...body } = req.body;
+  const { ...body } = req.body;
 
   if (req.params.id === "-1") {
     // create new
     const newResume = await Resume(body);
-    const qrCode = generateQrCode(newResume.id, link);
+    const qrCode = generateQrCode(newResume.id, newResume.ownerUserName);
     newResume.qrCode = qrCode;
     await newResume.save();
 
@@ -73,6 +118,7 @@ exports.saveResume = async (req, res) => {
   }
 
   // update
+  resume.name = body.name;
   resume.elements = body.elements;
   await resume.save();
 
@@ -101,4 +147,16 @@ exports.changeVisibility = async (req, res) => {
     success: true,
     resume
   })
+}
+
+// upload photo
+exports.uploadImage = async (req, res) => {
+  const { elementid } = req.body;
+  const { image } = req.files;
+  const extension = image.name.split('.').pop();;
+
+  if (!image) return res.status(400);
+
+  image.mv(uploadsDir + elementid + "." + extension);
+  res.status(200);
 }

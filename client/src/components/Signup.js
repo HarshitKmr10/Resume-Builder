@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
     const [credentials, setCredentials] = useState({name:"", email:"", password:"", workExperince:"", education:"", projects:"", skills:""})
@@ -33,7 +33,7 @@ const Signup = () => {
         setCredentials({...credentials, [e.target.name]: e.target.value})
     }
   return (
-    <div className="main">
+    <div className="main signup">
         <div className="logo"></div>
 
         <div className="title">

@@ -25,3 +25,6 @@ yarn-error.log*
 
 # qrcode
 /public/img/qrcodes/
+
+# uploads
+/public/img/uploads/

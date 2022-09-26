@@ -48,18 +48,23 @@ const TextSidebar = ({ activeElementId, setActiveElementId }) => {
     setActiveElementId(null);
   }
 
+  function rgbToHex(rgb) {
+    const [r, g, b] = rgb.replace("rgb", "").slice(1, -1).split(", ").map(parseInt);
+    return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+  }
+
   return (
     <>
     <div>Edit Text Style</div>
       <div className={'form-group'}>
         <label htmlFor="font-size">Font Size:</label>
         <input id="font-size" type="number" step={0.1}
-          onChange={changeFontSize} defaultValue={16} />
+          onChange={changeFontSize} defaultValue={styles["fontSize"].slice(0, -2) || 16} />
       </div>
       <div className='form-group'>
         <label htmlFor="color">Color:</label>
         <input id="color" type="color"
-          onChange={changeColor} defaultValue={"#000"} />
+          onChange={changeColor} defaultValue={rgbToHex(styles["color"]) || "#000"} />
       </div>
       <div className='font-styles'>
         <span className={(styles["fontWeight"] === "bold") ? "active" : ""}
