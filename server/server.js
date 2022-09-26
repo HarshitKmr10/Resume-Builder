@@ -32,7 +32,7 @@ app.use(cors(corsOptions))
 app.get("/", (req, res)=> console.log("API running"))
 
 //Defining the routes here
-app.get("/api/user", require('./routes/api/user'));
+app.post("/api/user", require('./routes/api/user'));
 
 app.post("/api/auth", require('./routes/api/auth'));
 

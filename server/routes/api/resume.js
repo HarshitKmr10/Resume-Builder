@@ -14,13 +14,13 @@ router.route("/resume/:id").get(getResumeById);
 router.route("/templates").get(getAllTemplates);
 
 // get user's resumes
-router.route("/:userid/resumes").get(getUserResumes);
+router.route("/resumes/:userid").get(getUserResumes);
 
 // save resume
 router.route("/resume/:id").post(saveResume);
 
 // change visibility
-router.route("/resume/:id/visibility").put(changeVisibility);
+router.route("/resume/visibility/:id").put(changeVisibility);
 
 // upload photo
 router.route("/upload").post(uploadImage);

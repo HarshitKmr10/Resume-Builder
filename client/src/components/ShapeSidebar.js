@@ -32,7 +32,7 @@ const ShapeSidebar = ({ activeElementId, setActiveElementId }) => {
 
   return (
     <>
-      <div>Edit Image Style</div>
+      <div>Edit Shape Style</div>
       <div className={'form-group'}>
         <label htmlFor="height">Height:</label>
         <input id="height" type="number"

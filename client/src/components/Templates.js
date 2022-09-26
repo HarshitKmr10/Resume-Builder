@@ -35,12 +35,18 @@ const Templates = () => {
               return (
                 <div className='card' key={template._id}>
                   <div>
-                    <Page resumeElements={template.elements} isTemplate={true} />
+                    <Page resumeElements={template.elements} isReadOnly={true} />
                   </div>
                   <div className='content'>
                     <h3 className='template-name'>{template.name}</h3>
                     <p><b>Rating:</b> {template.rating} / 5</p>
-                    <button className="btn">View Template</button>
+                    <button className="btn"
+                      onClick={() => {
+                        let baseUrl = window.location.href.replace("/templates", "");
+                        window.location.href = `${baseUrl}/${template.ownerUserName}/${template._id}`;
+                      }}>
+                      View Template
+                    </button>
                     <img className='template-qr' src={`/img/qrcodes/${template.qrCode}`} alt={template.name} />
                   </div>
                 </div>

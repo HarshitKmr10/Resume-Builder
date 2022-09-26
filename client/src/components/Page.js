@@ -6,14 +6,14 @@ import TextElement from './TextElement';
 import ImageElement from './ImageElement';
 import ShapeElement from './ShapeElement';
 
-const Page = ({ resumeElements, isTemplate }) => {
+const Page = ({ resumeElements, isReadOnly }) => {
   const pageId = useId();
   const pageRef = useRef();
   const { setActive } = useResume();
 
   function addElement(element) {
     const { id, style, elementType, src, text } = element;
-    const newElement = createNewElement(pageRef.current, elementType, setActive, isTemplate);
+    const newElement = createNewElement(pageRef.current, elementType, setActive, isReadOnly);
     newElement.id = id;
     Object.keys(style).forEach(key => newElement.style[key] = style[key]);
 

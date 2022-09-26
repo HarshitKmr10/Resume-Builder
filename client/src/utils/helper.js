@@ -7,7 +7,7 @@ function dragStart(e) {
   e.dataTransfer.setDragImage(img, 0, 0);
 }
 
-export const createNewElement = (activePage, type, setActive, isTemplate = false) => {
+export const createNewElement = (activePage, type, setActive, isReadOnly = false) => {
   const { top, left, height, width } = activePage.getBoundingClientRect();
   const element = document.createElement("div");
   element.id = uuid();
@@ -17,7 +17,7 @@ export const createNewElement = (activePage, type, setActive, isTemplate = false
   element.setAttribute("element-type", type);
   element.tabIndex = -1;
   
-  if (!isTemplate) {
+  if (!isReadOnly) {
     element.draggable = true;
     element.ondragstart = dragStart;
     element.ondrag = (e) => {

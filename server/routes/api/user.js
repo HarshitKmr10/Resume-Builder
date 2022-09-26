@@ -1,43 +1,44 @@
 const express = require('express')
 const router = express.Router();
-const {check, validationResult} = require('express-validator')
+const { check, validationResult } = require('express-validator')
 const User = require('../../models/UserSchema')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const config = require('config')
 
-router.get("/api/user", [
+router.post("/api/user", [
 
     // user input validation
-    check('name', "Name is required").not().isEmpty(),
+    check('username', "Name is required").not().isEmpty(),
     check('email', "Email is required").isEmail(),
-    check('password', "Password is required").isLength({min: 6}),
+    check('password', "Password is required").isLength({ min: 6 }),
 
-], async (req, res)=>{
+], async (req, res) => {
 
     // res.send("User route")
     const error = validationResult(req);
-    if(!error.isEmpty()){
-        return res.status(400).json({ error: error.array()});
+    if (!error.isEmpty()) {
+        return res.status(400).json({ error: error.array() });
     }
 
-    const {name, email, password} = req.body;
-
-    try{
+    const { username, email, password, skills } = req.body;
+    
+    try {
         //see if the user exist or not
-        let user = await User.findOne({email})
+        const userExists = await User.findOne({ email })
 
-        if(user){
-            return res.status(400).json({error: [{msg: "Hey the user already exists!"}]})
+        if (userExists) {
+            return res.status(400).json({ sucess: false, msg: "Hey the user already exists!" })
         }
 
         //make a new user if it doesnt exists
-        user = new User({
-            name,
+        const user = await User({
+            username,
             email,
             password,
-            workExpierience,
-            education
+            skills,
+            // workExperience,
+            // education
         })
 
         //Encrypt the user password 
@@ -50,7 +51,7 @@ router.get("/api/user", [
         //return jsonwebtoken
         //making payload
         const payload = {
-            user:{
+            user: {
                 id: user.id
             }
         };
@@ -58,14 +59,14 @@ router.get("/api/user", [
         jwt.sign(
             payload,
             config.get('jwtSecret'),
-            {expiresIn: 360000},
-            (err, token)=>{
-                if(err) throw err;
-                res.json({success:true,token})
+            { expiresIn: 360000 },
+            (err, token) => {
+                if (err) throw err;
+                res.json({ success: true, token, user })
             })
-    }catch(err){
-        console.error(error.message);
-        res.status(500).json({success: false, msg: "Server Error"})
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ success: false, msg: "Server Error" })
     }
 });
 

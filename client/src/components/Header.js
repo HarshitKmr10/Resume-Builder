@@ -10,15 +10,17 @@ import ImageElement from './ImageElement';
 import ShapeElement from './ShapeElement';
 import axios from 'axios';
 
-const Header = ({ resumeId, resumeName }) => {
+const Header = ({ resumeId, resumeName, isReadOnly }) => {
 
   const resumeNameRef = useRef();
   const imageInputRef = useRef();
   const { setActive } = useResume();
 
   useEffect(() => {
+    if (isReadOnly) return;
+
     resumeNameRef.current.value = resumeName;
-  }, [resumeName])
+  }, [resumeName, isReadOnly])
 
   function addText() {
     let activePage = document.querySelector(".page.active");
@@ -106,31 +108,41 @@ const Header = ({ resumeId, resumeName }) => {
   return (
     <header>
       <div className='element-btn-group'>
-        <div onClick={addText}>
-          <FiType />
-        </div>
-        <div onClick={addShape}>
-          <BiRectangle />
-        </div>
-        <div onClick={openFileExplorer}>
-          <BsImage />
-          <form id='image-form' action={`${process.env.REACT_APP_SERVER_URL}upload`}
-            method='POST' encType='multipart/form-data'
-            onSubmit={e => e.preventDefault()}>
-            <input ref={imageInputRef}
-              name="image"
-              type={"file"}
-              accept="image/*"
-              multiple={false}
-              onChange={addImage}
-              style={{ display: "none" }} />
-            <input name="elementid" style={{ display: "none" }} />
-          </form>
-        </div>
+        {
+          !isReadOnly &&
+          <>
+            <div onClick={addText}>
+              <FiType />
+            </div>
+            <div onClick={addShape}>
+              <BiRectangle />
+            </div>
+            <div onClick={openFileExplorer}>
+              <BsImage />
+              <form id='image-form' action={`${process.env.REACT_APP_SERVER_URL}upload`}
+                method='POST' encType='multipart/form-data'
+                onSubmit={e => e.preventDefault()}>
+                <input ref={imageInputRef}
+                  name="image"
+                  type={"file"}
+                  accept="image/*"
+                  multiple={false}
+                  onChange={addImage}
+                  style={{ display: "none" }} />
+                <input name="elementid" style={{ display: "none" }} />
+              </form>
+            </div>
+          </>
+        }
       </div>
       <div>
-        <input ref={resumeNameRef} defaultValue={resumeName || 'Untitled'} />
-        <button onClick={saveChanges}>Save Changes</button>
+        {
+          !isReadOnly &&
+          <>
+            <input ref={resumeNameRef} defaultValue={resumeName || 'Untitled'} />
+            <button onClick={saveChanges}>Save Changes</button>
+          </>
+        }
       </div>
     </header>
   )

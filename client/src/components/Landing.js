@@ -1,19 +1,26 @@
 import React from 'react'
 import { useNavigate } from "react-router-dom"
+import { useUser } from "../contexts/UserProvider"
 
 function Landing() {
-
 	const navigate = useNavigate();
+	const { user } = useUser();
 
 	return (
 		<div className='header'>
 			<div className="navbar container">
 				<div className="logo">Resume Builder</div>
 				<ul className="nav-items">
-					<div className="sign-in btn btn-secondary" onClick={() => navigate("/login")}>Log in</div>
-					<div className="getting-started-today btn btn-primary" onClick={() => navigate("/signup")}>
-						Get started today
-					</div>
+					{
+						user ? <h3 style={{ cursor: "pointer" }}
+							onClick={() => navigate(`/${user.username}`)}>{user.username}</h3> :
+							<>
+								<div className="sign-in btn btn-secondary" onClick={() => navigate("/login")}>Log in</div>
+								<div className="getting-started-today btn btn-primary" onClick={() => navigate("/signup")}>
+									Get started today
+								</div>
+							</>
+					}
 				</ul>
 			</div>
 
