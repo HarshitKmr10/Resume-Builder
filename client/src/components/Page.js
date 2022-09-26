@@ -6,14 +6,14 @@ import TextElement from './TextElement';
 import ImageElement from './ImageElement';
 import ShapeElement from './ShapeElement';
 
-const Page = ({ resumeElements }) => {
+const Page = ({ resumeElements, isTemplate }) => {
   const pageId = useId();
   const pageRef = useRef();
   const { setActive } = useResume();
 
   function addElement(element) {
     const { id, style, elementType, src, text } = element;
-    const newElement = createNewElement(pageRef.current, elementType, setActive);
+    const newElement = createNewElement(pageRef.current, elementType, setActive, isTemplate);
     newElement.id = id;
     Object.keys(style).forEach(key => newElement.style[key] = style[key]);
 
@@ -25,7 +25,7 @@ const Page = ({ resumeElements }) => {
         ReactDOM.createRoot(newElement).render(<ImageElement src={src} />);
         break;
       case "shape":
-        ReactDOM.createRoot(newElement).render(<ShapeElement />);
+        ReactDOM.createRoot(newElement).render(<ShapeElement style={style} />);
         break;
       default:
         break;

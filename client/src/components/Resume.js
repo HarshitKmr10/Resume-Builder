@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import ResumeProvider from '../contexts/ResumeProvider';
 import Header from "./Header";
 import Page from "./Page";
 import Sidebar from "./Sidebar";
@@ -28,7 +27,7 @@ const Resume = () => {
   }, [id])
 
   return (
-    <ResumeProvider>
+    <>
       <Header resumeId={id} resumeName={resumeDetails?.name} />
       <main className='resume'>
         <div className='drop-area'>
@@ -36,7 +35,7 @@ const Resume = () => {
         </div>
         <Sidebar qrCodeSrc={resumeDetails?.qrCode} resumeName={resumeDetails?.name} />
       </main>
-    </ResumeProvider>
+    </>
   )
 }
 
