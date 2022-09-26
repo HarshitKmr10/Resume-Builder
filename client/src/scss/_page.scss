@@ -4,3 +4,10 @@
     aspect-ratio: 2480 / 3508;
     background-color: white;
 }
+
+.template {
+    .page {
+        scale: 0.85;
+        user-select: none;
+    }
+}

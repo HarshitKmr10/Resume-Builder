@@ -11,7 +11,7 @@ router.route("/resumes").get(getAllResumes);
 router.route("/resume/:id").get(getResumeById);
 
 // get all public resumes / templates
-router.route("/resume/templates").get(getAllTemplates);
+router.route("/templates").get(getAllTemplates);
 
 // get user's resumes
 router.route("/:userid/resumes").get(getUserResumes);

@@ -86,7 +86,7 @@ function generateQrCode(id, ownerUserName) {
   const path = `${qrCodeDir}/${id}.png`;
   const link = `${clientUrl}/${ownerUserName}/${id}`;
   QRCode.toFile(path, link);
-  return path;
+  return `${id}.png`;
 }
 
 // save resume

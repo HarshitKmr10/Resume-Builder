@@ -7,7 +7,7 @@ function dragStart(e) {
   e.dataTransfer.setDragImage(img, 0, 0);
 }
 
-export const createNewElement = (activePage, type, setActive) => {
+export const createNewElement = (activePage, type, setActive, isTemplate = false) => {
   const { top, left, height, width } = activePage.getBoundingClientRect();
   const element = document.createElement("div");
   element.id = uuid();
@@ -16,12 +16,16 @@ export const createNewElement = (activePage, type, setActive) => {
   element.style.left = "50%";
   element.setAttribute("element-type", type);
   element.tabIndex = -1;
-  element.draggable = true;
-  element.ondragstart = dragStart;
-  element.ondrag = (e) => {
-    element.style.top = (100 * (e.y - top) / height) + "%";
-    element.style.left = (100 * (e.x - left) / width) + "%";
+  
+  if (!isTemplate) {
+    element.draggable = true;
+    element.ondragstart = dragStart;
+    element.ondrag = (e) => {
+      element.style.top = (100 * (e.y - top) / height) + "%";
+      element.style.left = (100 * (e.x - left) / width) + "%";
+    }
+
+    element.onclick = () => setActive(element.id);
   }
-  element.onclick = () => setActive(element.id);
   return element;
 }
