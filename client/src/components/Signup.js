@@ -33,7 +33,7 @@ const Signup = () => {
         setCredentials({...credentials, [e.target.name]: e.target.value})
     }
   return (
-    <div className="main">
+    <div className="main signup">
         <div className="logo"></div>
 
         <div className="title">

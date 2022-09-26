@@ -1,3 +1,445 @@
 .signup {
- padding: 2rem; 
+    height: 170vh;
+    padding: 4rem;
+    body {
+        margin: 0px;
+        height: 100vh;
+        width: 100vw;
+
+        color: #642da8;
+        background-color: #f1f1f1;
+
+    }
+
+    .title {
+        text-align: center;
+        font-size: 20px;
+        color: #642da8;
+        letter-spacing: .5px;
+        margin: px;
+        font-family: gotham;
+        margin-bottom: 75px;
+
+    }
+
+    .credentials {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        margin-left: 100px;
+        padding: 2px 5px 0px 5px;
+    }
+
+    /* .credentials input{
+        border : none;
+        outline: none;
+        background: none;
+        font-size: 12px;
+        color: #642da8;
+        padding: 10px 10px 10px 5px;
+        letter-spacing: 1px;
+    } */
+
+
+
+
+    .password {
+        margin-bottom: 15px;
+        width: 45%;
+        border-bottom: 2px solid #c2c4c3;
+        transition: .3s ease;
+        margin-left: 100px;
+        padding: 2px 5px 0px 5px;
+    }
+
+    .password input {
+        border: none;
+        outline: none;
+        background: none;
+        font-size: 12px;
+        color: #642da8;
+        padding: 10px 10px 10px 5px;
+        letter-spacing: 1px;
+    }
+
+    .password:hover {
+        border-bottom: 2px solid #642da8;
+    }
+
+    .E-mail {
+        margin-bottom: 10px;
+        width: 45%;
+        border-bottom: 2px solid #c2c4c3;
+        transition: 3s5 ease;
+        margin-left: 100px;
+        padding: 2px 5px 0px 5px;
+    }
+
+    .E-mail input {
+        border: none;
+        outline: none;
+        background: none;
+        font-size: 12px;
+        color: #642da8;
+        padding: 10px 10px 10px 5px;
+        letter-spacing: 1px;
+    }
+
+    .E-mail:hover {
+        border-bottom: 3px solid #642da8;
+    }
+
+    .Work_Experience {
+        text-align: center;
+        margin-right: 200px;
+    }
+
+
+    .Experience_1 {
+        text-align: center;
+        margin-right: 200px;
+    }
+
+    .company_2 {
+        text-align: center;
+        padding-right: 200px;
+    }
+
+    .Designation {
+        text-align: left;
+        margin-right: 200px;
+        margin-bottom: 10px;
+        width: 45%;
+        border-bottom: 2px solid #c2c4c3;
+        transition: .3s ease;
+        margin-left: 100px;
+        padding: 2px 5px 0px 5px;
+    }
+
+    .Designation input {
+        border: none;
+        outline: none;
+        background: none;
+        font-size: 12px;
+        color: #642da8;
+        padding: 10px 10px 10px 5px;
+        letter-spacing: 1px;
+    }
+
+    .Designation:hover {
+        border-bottom: 3px solid #642da8;
+    }
+
+    .Company {
+        margin-bottom: 10px;
+        width: 45%;
+        border-bottom: 2px solid #c2c4c3;
+        transition: .3s ease;
+        margin-left: 100px;
+        padding: 2px 5px 0px 5px;
+    }
+
+    .Company input {
+        border: none;
+        outline: none;
+        background: none;
+        font-size: 12px;
+        color: #642da8;
+        padding: 10px 10px 10px 5px;
+        letter-spacing: 1px;
+    }
+
+    .Company:hover {
+        border-bottom: 3px solid #642da8;
+    }
+
+    .DateofJoining {
+        margin-bottom: 10px;
+        width: 45%;
+        border-bottom: 2px solid #c2c4c3;
+        transition: .3s ease;
+        margin-left: 100px;
+        padding: 2px 5px 0px 5px;
+    }
+
+    .DateofJoining input {
+        border: none;
+        outline: none;
+        background: none;
+        font-size: 12px;
+        color: #642da8;
+        padding: 10px 10px 10px 5px;
+        letter-spacing: 1px;
+    }
+
+    .DateofJoining:hover {
+        border-bottom: 3px solid #642da8;
+    }
+
+    .Description {
+        margin-bottom: 10px;
+        width: 45%;
+        border-bottom: 2px solid #c2c4c3;
+        transition: .3s ease;
+        margin-left: 100px;
+        padding: 2px 5px 0px 5px;
+    }
+
+    .Description input {
+        border: none;
+        outline: none;
+        background: none;
+        font-size: 12px;
+        color: #642da8;
+        padding: 10px 10px 10px 5px;
+        letter-spacing: 1px;
+    }
+
+    .Description:hover {
+        border-bottom: 3px solid #642da8;
+    }
+
+    .Education {
+        text-align: center;
+        padding-right: 200px;
+    }
+
+    .Institute_Name {
+        justify-content: center;
+        margin-bottom: 10px;
+        width: 45%;
+        border-bottom: 2px solid #c2c4c3;
+        transition: .3s ease;
+        margin-left: 100px;
+        padding: 2px 5px 0px 5px;
+    }
+
+    .Institute_Name input {
+        border: none;
+        outline: none;
+        background: none;
+        font-size: 12px;
+        color: #642da8;
+        padding: 10px 10px 10px 5px;
+        letter-spacing: 1px;
+    }
+
+    .Institute_Name:hover {
+        border-bottom: 3px solid #642da8;
+    }
+
+    .Degree {
+        margin-bottom: 10px;
+        width: 45%;
+        border-bottom: 2px solid #c2c4c3;
+        transition: .3s ease;
+        margin-left: 100px;
+        padding: 2px 5px 0px 5px;
+    }
+
+    .Degree input {
+        border: none;
+        outline: none;
+        background: none;
+        font-size: 12px;
+        color: #642da8;
+        padding: 10px 10px 10px 5px;
+        letter-spacing: 1px;
+    }
+
+    .Degree:hover {
+        border-bottom: 3px solid #642da8;
+    }
+
+    .CGPA {
+        margin-bottom: 10px;
+        width: 45%;
+        border-bottom: 2px solid #c2c4c3;
+        transition: .3s ease;
+        margin-left: 100px;
+        padding: 2px 5px 0px 5px;
+    }
+
+    .CGPA input {
+        border: none;
+        outline: none;
+        background: none;
+        font-size: 12px;
+        color: #642da8;
+        padding: 10px 10px 10px 5px;
+        letter-spacing: 1px;
+    }
+
+    .CGPA:hover {
+        border-bottom: 3px solid #642da8;
+    }
+
+    .Date_of_Passout {
+        margin-bottom: 10px;
+        width: 45%;
+        border-bottom: 2px solid #c2c4c3;
+        transition: .3s ease;
+        margin-left: 100px;
+        padding: 2px 5px 0px 5px;
+    }
+
+    .Date_of_Passout input {
+        border: none;
+        outline: none;
+        background: none;
+        font-size: 12px;
+        color: #642da8;
+        padding: 10px 10px 10px 5px;
+        letter-spacing: 1px;
+    }
+
+    .Date_of_Passout:hover {
+        border-bottom: 3px solid #642da8;
+    }
+
+    .Projects {
+
+        text-align: center;
+        padding-right: 200px;
+
+    }
+
+    .project_one {
+        text-align: center;
+        padding-right: 200px;
+    }
+
+    .project_two {
+        text-align: center;
+        padding-right: 200px;
+    }
+
+    .Project_Name {
+        margin-bottom: 10px;
+        width: 45%;
+        border-bottom: 2px solid #c2c4c3;
+        transition: .3s ease;
+        margin-left: 100px;
+        padding: 2px 5px 0px 5px;
+    }
+
+    .Project_Name input {
+        border: none;
+        outline: none;
+        background: none;
+        font-size: 12px;
+        color: #642da8;
+        padding: 10px 10px 10px 5px;
+        letter-spacing: 1px;
+    }
+
+    .Project_Name:hover {
+        border-bottom: 3px solid #642da8;
+    }
+
+    .Description_Project {
+        margin-bottom: 10px;
+        width: 45%;
+        border-bottom: 2px solid #c2c4c3;
+        transition: .3s ease;
+        margin-left: 100px;
+        padding: 2px 5px 0px 5px;
+    }
+
+    .Description_Project input {
+        border: none;
+        outline: none;
+        background: none;
+        font-size: 12px;
+        color: #642da8;
+        padding: 10px 10px 10px 5px;
+        letter-spacing: 1px;
+    }
+
+    .Description_Project:hover {
+        border-bottom: 3px solid #642da8;
+    }
+
+    .Skills {
+        text-align: center;
+        margin-right: 200px;
+    }
+
+    .Skills_form {
+        margin-bottom: 10px;
+        width: 45%;
+        border-bottom: 2px solid #c2c4c3;
+        transition: .3s ease;
+        margin-left: 100px;
+        padding: 2px 5px 0px 5px;
+    }
+
+    .Skills_form input {
+        border: none;
+        outline: none;
+        background: none;
+        font-size: 12px;
+        color: #642da8;
+        padding: 10px 10px 10px 5px;
+        letter-spacing: 1px;
+    }
+
+    .Skills_form:hover {
+        border-bottom: 3px solid #642da8;
+    }
+
+
+
+    .submit {
+        outline: none;
+        border: none;
+        width: 60%;
+        margin-left: 300px;
+        padding: 0.7rem 0.5rem;
+        border-radius: 30px;
+        color: #fff;
+        font-size: 20px;
+        font-weight: 700;
+        text-align: center;
+        background-image: linear-gradient(to right, #642da8 0%, #29323c 51%, #485563 100%);
+        background-size: 200%;
+        box-shadow: 3px 3px 8px #b1b1b1, -3px -3px 8px #fff;
+        transition: .5 ease;
+        margin-top: 4rem;
+
+    }
+
+    .submit:hover {
+        background-position: right;
+        transition: .3s ease;
+
+    }
+
+    .link {
+        margin: 10px;
+        text-align: center;
+    }
+
+    /* .login{
+        outline:none;
+        margin-top: 10px;
+        border: none;
+        width: 100%;
+        border-radius: 30px;
+        color: #fff;
+        font-size: 20px;
+        font-weight: 700;
+        text-align: center;
+        background-image: linear-gradient(to right, #642da8 0%,#29323c 51%, #485563 100%);
+        background-size: 200%;
+        box-shadow: 3px 3px 8px #b1b1b1, -3px -3px 8px #fff;
+        transition: .5 ease;*/
+
+
+     h2{
+        margin: 4rem;
+     }
+
+     .Work_Experience h2{
+        margin-top: 0;
+     }
 }
