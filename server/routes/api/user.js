@@ -28,7 +28,7 @@ router.get("/api/user", [
         let user = await User.findOne({email})
 
         if(user){
-            return res.status(400).json({error: [{mssg: "Hey the user already exists!"}]})
+            return res.status(400).json({error: [{msg: "Hey the user already exists!"}]})
         }
 
         //make a new user if it doesnt exists
@@ -36,6 +36,8 @@ router.get("/api/user", [
             name,
             email,
             password,
+            workExpierience,
+            education
         })
 
         //Encrypt the user password 

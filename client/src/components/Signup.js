@@ -130,8 +130,7 @@ const Signup = () => {
         </div>   
         <button className="submit">Submit</button>
         <div className="link">
-            <a href = "#">Sign In</a> 
-            
+            <a href = "#">Sign In</a>  
         </div>
     </div>
     </div>

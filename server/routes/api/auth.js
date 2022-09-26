@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const jwtVerify = require('../../middleware/jwtVerification')
-const bcryptjs = require('bcryptjs')
+const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const {check, validationResult} = require('express-validator')
 const config = require('config')
@@ -23,10 +23,12 @@ router.get("/api/auth",jwtVerify, async(req, res)=>{
 router.post("/api/auth", [
 
      check('email', 'Please include a valid email').isEmail(),
-     check('password', "Password is required")
+     check('password', "Password is required").exists()
 ], 
 async (req, res)=>{
+    // let success = false;
     const error = validationResult(req);
+    let success= false;
     if(!error.isEmpty()){
         return res.status(400).json({error: error.array()})
     }
@@ -40,6 +42,13 @@ async (req, res)=>{
          return res.status(400).json({error: [{msg: "Invalid Credentials"}]})
         }
         //return jsonwebtoken
+
+        const isMatch = await bcrypt.compare(password, user.password)
+
+        if(!isMatch){
+            return res.status(400).json({ error: [{error: 'Invalid password'}]})
+        }
+
         //making a payload
         const payload = {
             user:{
@@ -48,10 +57,11 @@ async (req, res)=>{
         };
         jwt.sign(payload,
             config.get('jwtSecret'),
+            {success: true},
             {expiresIn: 360000},
             (err, token)=>{
                 if(err) throw err;
-                res.json({token});
+                res.json({success,token});
             
             });
     }catch(err){
