@@ -17,7 +17,7 @@ function Landing() {
 				</ul>
 			</div>
 
-			<div className="main-content">
+			<div className="main-content" id = "slide">
 				<div className="main-intro">
 					<h1>Build your <span>QR Code Based</span> resume from scratch</h1>
 				</div>
