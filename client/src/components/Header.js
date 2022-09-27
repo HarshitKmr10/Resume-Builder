@@ -111,23 +111,19 @@ const Header = ({ resumeId, resumeName, resumeElements, isReadOnly, download }) 
   async function createNewResume(name) {
     try {
       const data = { name, ownerId: user._id, ownerUserName: user.username };
-      const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}resume/-1`, data);
-      const { resume } = response.data;
-      return resume;
+      axios.post(`${process.env.REACT_APP_SERVER_URL}resume/-1`, data).then(response => {
+        const { resume } = response.data;
+        const { _id, name: resumeName, ownerUserName } = resume;
+        saveResume(resumeElements, _id, resumeName).then(() => navigate(`/${ownerUserName}/${_id}`));
+      });
     } catch (err) {
       console.log(err);
     }
   }
 
   async function copyAndEdit() {
-    const { _id, name, ownerUserName } = await createNewResume(`Fork of ${resumeName}`);
-    await saveResume(resumeElements, _id, name);
-    navigate(`/${ownerUserName}/${_id}`);
+    await createNewResume(`Fork of ${resumeName}`);
   }
-
-  // function download() {
-
-  // }
 
   return (
     <header>
