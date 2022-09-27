@@ -42,4 +42,4 @@ app.use("/api/", require('./routes/api/resume'));
 const PORT = process.env.PORT || 3030;
 
 //listen
-app.listen(PORT, ()=> console.log(`Server running on the port ${PORT}`))
+app.listen(PORT, ()=> console.log(`Server running on the port ${PORT}...`))
