@@ -5,8 +5,8 @@ const fs = require('fs');
 const config = require('config');
 
 const clientUrl = config.get("clientURL");
-const qrCodeDir = `../client/public/img/qrcodes/`;
-const uploadsDir = `../client/public/img/uploads/`;
+const qrCodeDir = clientUrl + `/img/qrcodes/`;
+const uploadsDir = clientUrl + `/img/uploads/`;
 
 // create qrcode directory if doesn't exists
 if (!fs.existsSync(qrCodeDir)) {
