@@ -6,6 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from 'axios';
 import { useResume } from '../contexts/ResumeProvider';
 import { useUser } from '../contexts/UserProvider';
+import { jsPDF } from "jspdf";
 
 const Resume = () => {
 
@@ -21,12 +22,6 @@ const Resume = () => {
     setIsReadOnly(username !== user?.username);
     // eslint-disable-next-line
   }, [user, username, id])
-
-  useEffect(() => {
-    document.addEventListener("click", handleClick);
-    return () => document.removeEventListener("click", handleClick);
-    // eslint-disable-next-line
-  }, [])
 
   async function getResume() {
     try {
@@ -45,12 +40,21 @@ const Resume = () => {
     setActiveElementId(null);
   }
 
+  async function downloadPdf() {
+    const page = await document.querySelector(".page");
+    const {height, width} = page.getBoundingClientRect();
+    const pdf = new jsPDF("portrait", "px", [width, height]);
+    pdf.html(page).then(() => {
+      pdf.save(`${resumeDetails?.name}.pdf`);
+    });
+  }
+
   return (
     <>
       <Header resumeId={id} resumeName={resumeDetails?.name} isReadOnly={isReadOnly}
-        resumeElements={resumeDetails?.elements} />
+        resumeElements={resumeDetails?.elements} download={downloadPdf} />
       <main className='resume'>
-        <div className='drop-area'>
+        <div className='drop-area' onClick={handleClick}>
           <Page resumeElements={resumeDetails?.elements} isReadOnly={isReadOnly} />
         </div>
         <Sidebar qrCodeSrc={resumeDetails?.qrCode} resumeName={resumeDetails?.name} />

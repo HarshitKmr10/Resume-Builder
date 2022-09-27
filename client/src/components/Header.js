@@ -12,7 +12,7 @@ import axios from 'axios';
 import { useUser } from '../contexts/UserProvider';
 import { useNavigate } from 'react-router-dom';
 
-const Header = ({ resumeId, resumeName, resumeElements, isReadOnly }) => {
+const Header = ({ resumeId, resumeName, resumeElements, isReadOnly, download }) => {
 
   const resumeNameRef = useRef();
   const imageInputRef = useRef();
@@ -125,9 +125,9 @@ const Header = ({ resumeId, resumeName, resumeElements, isReadOnly }) => {
     navigate(`/${ownerUserName}/${_id}`);
   }
 
-  function download() {
+  // function download() {
 
-  }
+  // }
 
   return (
     <header>
@@ -168,6 +168,7 @@ const Header = ({ resumeId, resumeName, resumeElements, isReadOnly }) => {
             </> :
             <>
               <input ref={resumeNameRef} defaultValue={resumeName || 'Untitled'} />
+              <button onClick={download}>Download</button>
               <button onClick={saveChanges}>Save Changes</button>
             </>
         }
