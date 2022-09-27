@@ -9,7 +9,7 @@ header {
         @include flex($pos: null, $gap: 1rem);
 
         input {
-            width: clamp(100px, 150px, 200px);
+            width: 200px;
             padding: 0.2em 0.5em;
             font-size: 1rem;
             font-weight: 500;

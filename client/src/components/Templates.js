@@ -39,7 +39,7 @@ const Templates = () => {
                   </div>
                   <div className='content'>
                     <h3 className='template-name'>{template.name}</h3>
-                    <p><b>Rating:</b> {template.rating} / 5</p>
+                    <p><b>Owner:</b> {template.ownerUserName}</p>
                     <button className="btn"
                       onClick={() => {
                         let baseUrl = window.location.href.replace("/templates", "");

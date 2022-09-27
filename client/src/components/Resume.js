@@ -47,7 +47,8 @@ const Resume = () => {
 
   return (
     <>
-      <Header resumeId={id} resumeName={resumeDetails?.name} isReadOnly={isReadOnly} />
+      <Header resumeId={id} resumeName={resumeDetails?.name} isReadOnly={isReadOnly}
+        resumeElements={resumeDetails?.elements} />
       <main className='resume'>
         <div className='drop-area'>
           <Page resumeElements={resumeDetails?.elements} isReadOnly={isReadOnly} />

@@ -132,9 +132,9 @@
     transition: 0.5s;
   }
 
-  .main {
-    padding-inline: 5rem;
-  }
+  // .main {
+  //   padding-inline: 5rem;
+  // }
 
   .container {
     display: grid;
@@ -155,7 +155,7 @@
     .content {
       @include flex($pos: null, $gap: 1rem, $col: true);
       flex-grow: 1;
-      padding: 1rem;
+      padding: 2rem;
       align-self: flex-start;
 
       .template-name {

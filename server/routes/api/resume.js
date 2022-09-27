@@ -1,6 +1,7 @@
 const express = require('express');
 const { getAllTemplates, getUserResumes, saveResume,
-  changeVisibility, getResumeById, getAllResumes, uploadImage } = require('../../controllers/resumeController');
+  changeVisibility, getResumeById, getAllResumes,
+  uploadImage, deleteResume } = require('../../controllers/resumeController');
 
 const router = express.Router();
 
@@ -24,5 +25,8 @@ router.route("/resume/visibility/:id").put(changeVisibility);
 
 // upload photo
 router.route("/upload").post(uploadImage);
+
+// delete resume
+router.route("/resume/:id").delete(deleteResume);
 
 module.exports = router;

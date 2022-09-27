@@ -9,12 +9,16 @@ import { useResume } from '../contexts/ResumeProvider';
 import ImageElement from './ImageElement';
 import ShapeElement from './ShapeElement';
 import axios from 'axios';
+import { useUser } from '../contexts/UserProvider';
+import { useNavigate } from 'react-router-dom';
 
-const Header = ({ resumeId, resumeName, isReadOnly }) => {
+const Header = ({ resumeId, resumeName, resumeElements, isReadOnly }) => {
 
   const resumeNameRef = useRef();
   const imageInputRef = useRef();
   const { setActive } = useResume();
+  const { user } = useUser();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (isReadOnly) return;
@@ -90,19 +94,39 @@ const Header = ({ resumeId, resumeName, isReadOnly }) => {
       const text = elementType === "text" ? element.textContent : "";
       elementsData.push({ id, style, elementType, src, text });
     })
-    console.log(elementsData);
-    saveResume(elementsData);
+    saveResume(elementsData, resumeId);
   }
 
-  async function saveResume(elements) {
-    const name = resumeNameRef.current.value;
-    const data = { name, ownerId: "123", ownerUserName: "Chaitanya", elements };
+  async function saveResume(elements, id, newName = resumeNameRef.current.value) {
+    const name = newName;
+    const data = { name, elements };
     try {
-      await axios.post(`${process.env.REACT_APP_SERVER_URL}resume/${resumeId}`, data);
-      alert("Resumed Saved Successfully!");
+      await axios.post(`${process.env.REACT_APP_SERVER_URL}resume/${id}`, data);
+      alert("Resume Saved Successfully!");
     } catch (error) {
       console.log("Error in saving resume");
     }
+  }
+
+  async function createNewResume(name) {
+    try {
+      const data = { name, ownerId: user._id, ownerUserName: user.username };
+      const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}resume/-1`, data);
+      const { resume } = response.data;
+      return resume;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  async function copyAndEdit() {
+    const { _id, name, ownerUserName } = await createNewResume(`Fork of ${resumeName}`);
+    await saveResume(resumeElements, _id, name);
+    navigate(`/${ownerUserName}/${_id}`);
+  }
+
+  function download() {
+
   }
 
   return (
@@ -137,11 +161,15 @@ const Header = ({ resumeId, resumeName, isReadOnly }) => {
       </div>
       <div>
         {
-          !isReadOnly &&
-          <>
-            <input ref={resumeNameRef} defaultValue={resumeName || 'Untitled'} />
-            <button onClick={saveChanges}>Save Changes</button>
-          </>
+          isReadOnly ?
+            <>
+              <button onClick={copyAndEdit}>Copy and Edit</button>
+              <button onClick={download}>Download</button>
+            </> :
+            <>
+              <input ref={resumeNameRef} defaultValue={resumeName || 'Untitled'} />
+              <button onClick={saveChanges}>Save Changes</button>
+            </>
         }
       </div>
     </header>

@@ -160,3 +160,12 @@ exports.uploadImage = async (req, res) => {
   image.mv(uploadsDir + elementid + "." + extension);
   res.status(200);
 }
+
+// delete resume
+exports.deleteResume = async (req, res) => {
+  await Resume.findByIdAndDelete(req.params.id);
+
+  res.status(200).json({
+    success: true,
+  })
+}

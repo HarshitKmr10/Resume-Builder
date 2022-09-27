@@ -38,6 +38,28 @@ function Account() {
 		}
 	}
 
+	async function deleteResume(e, resumeId) {
+		const canDelete = window.confirm("Are you sure you want to delete this resume?");
+		if (!canDelete) return;
+		try {
+			axios.delete(`${process.env.REACT_APP_SERVER_URL}resume/${resumeId}`);
+			document.getElementById(`card-${resumeId}`).remove();
+		} catch (err) {
+			console.log(err);
+		}
+	}
+
+	async function createNewResume() {
+		try {
+			const data = { name: "Untitled", ownerId: user._id, ownerUserName: user.username };
+			const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}resume/-1`, data);
+			const { resume } = response.data;
+			navigate(`/${user.username}/${resume._id}`);
+		} catch (err) {
+			console.log(err);
+		}
+	}
+
 	return (
 		<>
 			{
@@ -53,12 +75,15 @@ function Account() {
 							<p><b>Email:</b> <span className="user-email">{user?.email}</span> </p>
 						</div>
 
-						<h2 className="resume-heading">Resumes</h2>
+						<div className='resume-section-header'>
+							<h2 className="resume-heading">Resumes</h2>
+							<button className='btn' onClick={createNewResume}>Create New</button>
+						</div>
 						<div className="resume-list">
 							{
 								resumes.map(resume => {
 									return (
-										<div className='card' key={resume._id}>
+										<div id={`card-${resume._id}`} className='card' key={resume._id}>
 											<div>
 												<Page resumeElements={resume.elements} isReadOnly={true} />
 											</div>
@@ -73,9 +98,11 @@ function Account() {
 													</select>
 												</div>
 												<div className='btn-group'>
-													<button className='btn'><BsTrash />&nbsp;Delete</button>
+													<button className='btn' onClick={e => deleteResume(e, resume._id)}>
+														<BsTrash />&nbsp;Delete
+													</button>
 													<button className="btn"
-														onClick={() => navigate(`/${resume.ownerUserName}/${resume.id}`)}>
+														onClick={() => navigate(`/${resume.ownerUserName}/${resume._id}`)}>
 														View Template
 													</button>
 												</div>
