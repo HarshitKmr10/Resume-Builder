@@ -10,12 +10,12 @@ const uploadsDir = `../client/public/img/uploads/`;
 
 // create qrcode directory if doesn't exists
 if (!fs.existsSync(qrCodeDir)) {
-  fs.mkdirSync(qrCodeDir, { recursize: true });
+  fs.mkdirSync(qrCodeDir, { recursive: true });
 }
 
 // create uploads directory if doesn't exists
 if (!fs.existsSync(uploadsDir)) {
-  fs.mkdirSync(uploadsDir, { recursize: true });
+  fs.mkdirSync(uploadsDir, { recursive: true });
 }
 
 // get all resume
