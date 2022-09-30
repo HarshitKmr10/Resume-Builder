@@ -1,5 +1,6 @@
 {
     "mongoURI": "mongodb+srv://piyush:Dard0409*@cluster0.q8prmzw.mongodb.net/?retryWrites=true&w=majority",
     "jwtSecret":"mysecrettoken",
-    "clientURL": "https://resume-builder-ineuron.netlify.app"
+    "clientURL": "https://resume-builder-ineuron.netlify.app",
+    "production": true
 }

@@ -1,22 +1,12 @@
 const User = require('../models/UserSchema');
 const Resume = require('../models/resumeSchema');
 const QRCode = require('qrcode');
-const fs = require('fs');
 const config = require('config');
 
+const PRODUCTION = config.get("production");
 const clientUrl = config.get("clientURL");
-const qrCodeDir = clientUrl + `/img/qrcodes/`;
-const uploadsDir = clientUrl + `/img/uploads/`;
-
-// create qrcode directory if doesn't exists
-if (!fs.existsSync(qrCodeDir)) {
-  fs.mkdirSync(qrCodeDir, { recursive: true });
-}
-
-// create uploads directory if doesn't exists
-if (!fs.existsSync(uploadsDir)) {
-  fs.mkdirSync(uploadsDir, { recursive: true });
-}
+const qrCodeDir = (PRODUCTION ? clientUrl : "../../client/public") + `/img/qrcodes/`;
+const uploadsDir = (PRODUCTION ? clientUrl : "../../client/public") + `/img/uploads/`;
 
 // get all resume
 exports.getAllResumes = async (req, res) => {
@@ -153,7 +143,7 @@ exports.changeVisibility = async (req, res) => {
 exports.uploadImage = async (req, res) => {
   const { elementid } = req.body;
   const { image } = req.files;
-  const extension = image.name.split('.').pop();;
+  const extension = image.name.split('.').pop();
 
   if (!image) return res.status(400);
 
