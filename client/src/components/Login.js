@@ -1,32 +1,33 @@
-import React , {useState} from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
+import axios from 'axios';
+import { useUser } from "../contexts/UserProvider";
 
-function Login(props) {
-    const [credentials, setCredentials] = useState({email:"", password:""});
-    const navigate = useNavigate();
-	const handleSubmit = async (e) =>{
+function Login() {
+	const [credentials, setCredentials] = useState({ email: "", password: "" });
+	const navigate = useNavigate();
+	const { setUser } = useUser();
+
+	const handleSubmit = async (e) => {
 		e.preventDefault();
-		const response = await fetch("http://localhost:3030/api/auth", {
-			method: 'POST',
-			headers:{
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({email: credentials.email, password: credentials.password})
-		});
-		const json = await response.json()
-		console.log(json);
 
-		if(json.success){
-		  //saving the jwt token into the localstorage
-		  localStorage.setItem('token', json.authtoken);
-		  //redirects towards home route
-		  navigate("/");
-		}else{
-			alert("Invalid credentials!")
+		try {
+			const response = await axios.post(process.env.REACT_APP_SERVER_URL + "auth", credentials)
+			const { success, token, user } = response.data;
+
+			if (!success) return alert("Invalid credentials!");
+
+			localStorage.setItem('token', token);
+			localStorage.setItem('user', JSON.stringify(user));
+			setUser(user);
+			navigate("/");
+		} catch (err) {
+			console.log(err);
 		}
 	}
-	const onChange = (e) =>{
-		setCredentials({...credentials, [e.target.name]: e.target.value})
+
+	const onChange = (e) => {
+		setCredentials({ ...credentials, [e.target.name]: e.target.value })
 	}
 
 	return (
@@ -39,7 +40,7 @@ function Login(props) {
 						<div className="credentials">
 							<div className="username">
 								<span className="glyphicon glyphicon-user"></span>
-								<input type="email" name="email" placeholder="Email" id="email" required  value={credentials.email} onChange={onChange}/>
+								<input type="email" name="email" placeholder="Email" id="email" required value={credentials.email} onChange={onChange} />
 							</div>
 							<div className="password">
 								<span className="glyphicon glyphicon-lock"></span>

@@ -4,7 +4,13 @@ import { useUser } from "../contexts/UserProvider"
 
 function Landing() {
 	const navigate = useNavigate();
-	const { user } = useUser();
+	const { user, setUser } = useUser();
+
+	function signOut() {
+		localStorage.removeItem('user');
+		localStorage.removeItem('token');
+		setUser(null);
+	}
 
 	return (
 		<div className='header'>
@@ -12,8 +18,12 @@ function Landing() {
 				<div className="logo">Resume Builder</div>
 				<ul className="nav-items">
 					{
-						user ? <h3 style={{ cursor: "pointer" }}
-							onClick={() => navigate(`/${user.username}`)}>{user.username}</h3> :
+						user ?
+							<>
+								<h3 style={{ cursor: "pointer" }}
+									onClick={() => navigate(`/${user.username}`)}>{user.username}</h3>
+									<div className='btn btn-primary' onClick={signOut}>Sign out</div>
+							</> :
 							<>
 								<div className="sign-in btn btn-secondary" onClick={() => navigate("/login")}>Log in</div>
 								<div className="getting-started-today btn btn-primary" onClick={() => navigate("/signup")}>
@@ -24,7 +34,7 @@ function Landing() {
 				</ul>
 			</div>
 
-			<div className="main-content" id = "slide">
+			<div className="main-content" id="slide">
 				<div className="main-intro">
 					<h1>Build your <span>QR Code Based</span> resume from scratch</h1>
 				</div>
