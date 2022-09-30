@@ -3,6 +3,7 @@ const connectDB = require('./config/db');
 const cors = require('cors')
 const config = require('config');
 const fileUpload = require('express-fileupload');
+const path = require('path');
 
 const app = express();
 
@@ -25,6 +26,8 @@ app.use(cors({
 //Init middleware
 app.use(express.json({extended: false}));
 app.use(fileUpload());
+app.use('/qrcode', express.static(path.join(__dirname, "qrcodes")));
+app.use('/upload', express.static(path.join(__dirname, "uploads")));
 
 //cors 
 app.use(cors(corsOptions))

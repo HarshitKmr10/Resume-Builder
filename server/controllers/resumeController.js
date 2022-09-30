@@ -2,11 +2,21 @@ const User = require('../models/UserSchema');
 const Resume = require('../models/resumeSchema');
 const QRCode = require('qrcode');
 const config = require('config');
+const path = require('path');
+const fs = require('fs');
 
-const PRODUCTION = config.get("production");
 const clientUrl = config.get("clientURL");
-const qrCodeDir = (PRODUCTION ? clientUrl : "../../client/public") + `/img/qrcodes/`;
-const uploadsDir = (PRODUCTION ? clientUrl : "../../client/public") + `/img/uploads/`;
+const qrCodeDir = path.join(__dirname, "../", 'qrcodes');
+const uploadsDir = path.join(__dirname, "../", 'uploads');
+
+// create qrcode directory if doesn't exists
+if (!fs.existsSync(qrCodeDir)) {
+  fs.mkdirSync(qrCodeDir, { recursive: true });
+}
+// create uploads directory if doesn't exists
+if (!fs.existsSync(uploadsDir)) {
+  fs.mkdirSync(uploadsDir, { recursive: true });
+}
 
 // get all resume
 exports.getAllResumes = async (req, res) => {

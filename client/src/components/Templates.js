@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Page from './Page'
+import { useNavigate } from "react-router-dom"
 
 const Templates = () => {
 
   const [templates, setTemplates] = useState([]);
+  const navigate = useNavigate();
+  const { REACT_APP_SERVER_URL } = process.env;
 
   const getAllTemplates = async () => {
     try {
-      const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}templates`);
+      const response = await axios.get(`${REACT_APP_SERVER_URL}templates`);
       setTemplates(response.data.resumes)
     } catch (err) {
       console.log(err);
@@ -17,6 +20,7 @@ const Templates = () => {
 
   useEffect(() => {
     getAllTemplates();
+    // eslint-disable-next-line
   }, [])
 
   return (
@@ -41,30 +45,12 @@ const Templates = () => {
                     <h3 className='template-name'>{template.name}</h3>
                     <p><b>Owner:</b> {template.ownerUserName}</p>
                     <button className="btn"
-                      onClick={() => {
-                        let baseUrl = window.location.href.replace("/templates", "");
-                        window.location.href = `${baseUrl}/${template.ownerUserName}/${template._id}`;
-                      }}>
+                      onClick={() => navigate(`/${template.ownerUserName}/${template._id}`)}>
                       View Template
                     </button>
-                    <img className='template-qr' src={`/img/qrcodes/${template.qrCode}`} alt={template.name} />
+                    <img className='template-qr' src={`${REACT_APP_SERVER_URL.replace("api/", "")}qrcode/${template.qrCode}`} alt={template.name} />
                   </div>
                 </div>
-                // <div className="card" key={template._id}>
-                //   <div className="box">
-                //     <div className="content">
-                //       <div>
-                //         <Page resumeElements={template.elements} />
-                //       </div>
-                //       <div className='details'>
-                //         {/* <h2></h2> */}
-                //         <h3>{template.name}</h3>
-                //         <p>Ratings: {template.rating}</p>
-                //         <button className="btn">View Template</button>
-                //       </div>
-                //     </div>
-                //   </div>
-                // </div>
               )
             })
           }

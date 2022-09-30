@@ -12,6 +12,8 @@ function Account() {
 	const [isReadOnly, setIsReadOnly] = useState(false);
 	const [resumes, setResumes] = useState([]);
 
+	const { REACT_APP_SERVER_URL } = process.env;
+
 	useEffect(() => {
 		if (user && username === user.username) getUserResumes();
 
@@ -106,7 +108,9 @@ function Account() {
 														View Template
 													</button>
 												</div>
-												<img className='resume-qr' src={`img/qrcodes/${resume.qrCode}`} alt={resume.name} />
+												<img className='resume-qr'
+													src={`${REACT_APP_SERVER_URL.replace("api/", "")}qrcode/${resume.qrCode}`}
+													alt={resume.name} />
 											</div>
 										</div>
 									)
