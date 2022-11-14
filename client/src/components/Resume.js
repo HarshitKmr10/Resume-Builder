@@ -30,6 +30,7 @@ const Resume = () => {
       setResumeDetails(resume);
     } catch (err) {
       navigate("/404");
+      // document.getElementById("test").textContent = JSON.stringify(err, null, 2);
     }
   }
 
@@ -51,6 +52,7 @@ const Resume = () => {
 
   return (
     <>
+      {/* <pre id="test"></pre> */}
       <Header resumeId={id} resumeName={resumeDetails?.name} isReadOnly={isReadOnly}
         resumeElements={resumeDetails?.elements} download={downloadPdf} />
       <main className='resume'>

@@ -21,7 +21,7 @@ router.post("/api/user", [
         return res.status(400).json({ error: error.array() });
     }
 
-    const { username, email, password, skills } = req.body;
+    const { email, password } = req.body;
     
     try {
         //see if the user exist or not
@@ -32,14 +32,7 @@ router.post("/api/user", [
         }
 
         //make a new user if it doesnt exists
-        const user = await User({
-            username,
-            email,
-            password,
-            skills,
-            // workExperience,
-            // education
-        })
+        const user = await User(req.body)
 
         //Encrypt the user password 
         const salt = await bcrypt.genSalt(10);

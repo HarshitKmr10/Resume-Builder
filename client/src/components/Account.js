@@ -3,7 +3,9 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useUser } from '../contexts/UserProvider';
 import { BsTrash } from 'react-icons/bs'
 import axios from 'axios'
-import Page from './Page';
+import Page from './Page'
+import { IoReloadOutline } from "react-icons/io5";
+import { BiArrowBack } from 'react-icons/bi';
 
 function Account() {
 	const navigate = useNavigate();
@@ -63,23 +65,30 @@ function Account() {
 	}
 
 	return (
-		<>
+		<main className='account-container'>
+			<button className='btn back-btn' onClick={() => navigate(-1)}><BiArrowBack />Go Back</button>
 			{
 				isReadOnly ?
 					<div className='account-not-found'>
 						<h2>Seems like you don't have an account...</h2>
-						<button onClick={() => navigate("/signup")}>Sign Up Now</button>
-					</div> :
-					<div className="account">
-						<h1 className="main-heading">User Account</h1>
-						<div className="user-info">
-							<p><b>Username:</b> <span className="user-name">{user?.username}</span> </p>
-							<p><b>Email:</b> <span className="user-email">{user?.email}</span> </p>
-						</div>
+						<button className='btn btn-primary' onClick={() => navigate("/signup")}>Sign Up Now</button>
+						<br />
+						<h3>Or Try</h3>
+						<button className='btn' onClick={() => navigate(0)}><IoReloadOutline />Reloading</button>
+					</div>
+					:
+					<div className='account-details'>
+						<div className="account">
+							<h1 className="main-heading">User Account</h1>
+							<div className="user-info">
+								<p><b>Username:</b> <span className="user-name">{user?.username}</span> </p>
+								<p><b>Email:</b> <span className="user-email">{user?.email}</span> </p>
+							</div>
 
-						<div className='resume-section-header'>
-							<h2 className="resume-heading">Resumes</h2>
-							<button className='btn' onClick={createNewResume}>Create New</button>
+							<div className='resume-section-header'>
+								<h2 className="resume-heading">Resumes</h2>
+								<button className='btn' onClick={createNewResume}>Create New</button>
+							</div>
 						</div>
 						<div className="resume-list">
 							{
@@ -119,7 +128,7 @@ function Account() {
 						</div>
 					</div>
 			}
-		</>
+		</main>
 	)
 }
 

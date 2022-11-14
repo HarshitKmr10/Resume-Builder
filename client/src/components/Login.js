@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { useUser } from "../contexts/UserProvider";
+import { BiArrowBack } from "react-icons/bi";
 
 function Login() {
 	const [credentials, setCredentials] = useState({ email: "", password: "" });
@@ -26,35 +27,34 @@ function Login() {
 		}
 	}
 
-	const onChange = (e) => {
+	const handleChange = (e) => {
 		setCredentials({ ...credentials, [e.target.name]: e.target.value })
 	}
 
 	return (
-		<div className='login'>
-			<div className="main">
-				<div className="logo"></div>
-				<div className="card">
-					<div className="title"> Resume Builder</div>
-					<form onSubmit={handleSubmit}>
-						<div className="credentials">
-							<div className="username">
-								<span className="glyphicon glyphicon-user"></span>
-								<input type="email" name="email" placeholder="Email" id="email" required value={credentials.email} onChange={onChange} />
-							</div>
-							<div className="password">
-								<span className="glyphicon glyphicon-lock"></span>
-								<input type="password" name="password" placeholder="Password" required value={credentials.password} onChange={onChange} />
-							</div>
-						</div>
-						<button className="submit">Submit</button>
-					</form>
-					<div className="link">
-						<Link to={"/signup"}>Forgot Password?</Link>&nbsp;&nbsp;&nbsp;&nbsp;<Link to={"/signup"}>Sign Up</Link>
-					</div>
-				</div>
+		<main className='login'>
+			<div className='header'>
+				<button className='btn back-btn' onClick={() => navigate(-1)}><BiArrowBack />Go Back</button>
 			</div>
-		</div>
+			<div className='form-container'>
+				<form onSubmit={handleSubmit}>
+					<h3>Log In</h3>
+					<div className='form-group'>
+						<label htmlFor="email">Email</label>
+						<input id="email" name="email" placeholder='Email' value={credentials.email} onChange={handleChange} />
+					</div>
+					<div className='form-group'>
+						<label htmlFor="password">Password</label>
+						<input type="password" id="password" name="password" placeholder='Password'
+							value={credentials.password} onChange={handleChange} />
+					</div>
+					<button type="submit" className='btn btn-primary'>Login</button>
+					<Link to='/signup' className='signup-link'>Don't have an account?&nbsp;&nbsp;<span>Sign Up</span></Link>
+				</form>
+				<img src="/img/login.png" alt='login' />
+			</div>
+			<img src="/img/wave.svg" alt="wave" className='wave' />
+		</main>
 	)
 }
 

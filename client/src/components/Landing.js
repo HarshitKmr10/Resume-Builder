@@ -13,26 +13,26 @@ function Landing() {
 	}
 
 	return (
-		<div className='header'>
-			<div className="navbar container">
+		<main className='landing-container'>
+			<nav className="header">
 				<div className="logo">Resume Builder</div>
 				<ul className="nav-items">
 					{
 						user ?
 							<>
-								<h3 style={{ cursor: "pointer" }}
-									onClick={() => navigate(`/${user.username}`)}>{user.username}</h3>
-									<div className='btn btn-primary' onClick={signOut}>Sign out</div>
+								<button className='btn'
+									onClick={() => navigate(`/${user.username}`)}>{user.username}</button>
+									<button className='btn btn-primary' onClick={signOut}>Sign out</button>
 							</> :
 							<>
-								<div className="sign-in btn btn-secondary" onClick={() => navigate("/login")}>Log in</div>
-								<div className="getting-started-today btn btn-primary" onClick={() => navigate("/signup")}>
+								<button className="sign-in btn btn-secondary" onClick={() => navigate("/login")}>Log in</button>
+								<button className="getting-started-today btn btn-primary" onClick={() => navigate("/signup")}>
 									Get started today
-								</div>
+								</button>
 							</>
 					}
 				</ul>
-			</div>
+			</nav>
 
 			<div className="main-content" id="slide">
 				<div className="main-intro">
@@ -43,11 +43,13 @@ function Landing() {
 					<p>Most QR code based resume building software are accurate, but hard to use. We make it user-friendly and easy to use.</p>
 				</div>
 
-				<div className="btn btn-primary" onClick={() => navigate("/chaitanyagiri/633187b807ef40871f00762a")}>Build your resume</div>
-				<div className="btn btn-secondary" onClick={() => navigate("/templates")}>Browse Templates</div>
+				<button className="btn btn-primary" onClick={() => navigate("/chaitanyagiri/633187b807ef40871f00762a")}
+				style={{ marginRight: "1.5rem" }}
+				>Build your resume</button>
+				<button className="btn btn-secondary" onClick={() => navigate("/templates")}>Browse Templates</button>
 			</div>
-
-		</div>
+			<img src="/img/wave.svg" alt="wave" className='wave' />
+		</main>
 	)
 }
 

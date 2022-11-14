@@ -155,7 +155,7 @@ const Header = ({ resumeId, resumeName, resumeElements, isReadOnly, download }) 
           </>
         }
       </div>
-      <div>
+      <div className='btn-group'>
         {
           isReadOnly ?
             <>

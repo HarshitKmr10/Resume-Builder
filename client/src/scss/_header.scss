@@ -29,7 +29,7 @@ header {
     @include flex($pos: null);
     height: 100%;
 
-    & > div {
+    &>div {
         @include flex($gap: 0.25rem);
         height: 100%;
         padding: 0 0.75rem;
@@ -37,6 +37,25 @@ header {
 
         &:hover {
             background-color: $secondary;
+        }
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .element-btn-group {
+        display: none;
+    }
+
+    header {
+        padding-inline: 1rem;
+    }
+
+    .btn-group {
+        @include flex($pos: null, $gap: 1rem);
+
+        input {
+            width: 120px !important;
+            flex-grow: 1;
         }
     }
 }

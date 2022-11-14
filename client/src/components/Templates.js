@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Page from './Page'
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
+import { BiArrowBack } from 'react-icons/bi';
 
 const Templates = () => {
 
@@ -26,6 +27,7 @@ const Templates = () => {
   return (
     <div className='template'>
       <div className='main'>
+        <button className='btn back-btn' onClick={() => navigate(-1)}><BiArrowBack /> Go Back</button>
         <div className='heading'>
           <h1>Browse Templates</h1>
         </div>

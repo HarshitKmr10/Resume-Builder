@@ -1,108 +1,95 @@
 .login {
-    display: flex;
-    align-items: center;
-    flex-direction: row-reverse;
+    position: relative;
     height: 100vh;
-    background-image: url("../../public/img/header-image.jpg");
-    object-fit: cover;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-color: white;
+    overflow: hidden;
 
-
-    .main {
-        margin-right: 35rem;
-        width: 400px;
-        border-radius: 20px;
-        font-family: sans-serif;
-        font-weight: 700;
+    .wave {
+        position: absolute;
+        bottom: -5vw;
+        pointer-events: none;
+    }
+    
+    .header { 
+        padding: 2rem $padding-inline;
     }
 
-    .card {
-        padding: 20px;
-        box-sizing: 100px 200px;
-
-        background-color: #fff;
-        box-shadow: 0px 0px 0.5rem rgba(149, 157, 165, 0.2);
+    .back-btn {
+        @include flex($gap: 0.5rem);
     }
 
-    .title {
-        text-align: center;
-        font-size: 40px;
-        color: #642da8;
-        letter-spacing: .5px;
-        margin-bottom: 1rem;
-        font-family: gotham;
+    .form-container {
+        @include flex;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        box-shadow: 0 0px 50px -12px rgb(0 0 0 / 0.25);
+        transform: translate(-50%, -50%);
+        background-color: white;
+        border-radius: 0.5rem;
+        overflow: hidden;
+        z-index: 1;
 
+        img {
+            display: block;
+            height: 400px;
+        }
     }
 
-    .credentials {
-        width: 100%;
-        padding: 2px 5px 0px 5px;
+    form {
+        padding: 1rem 2rem;
+
+        h3 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-group {
+            @include flex($pos: null, $gap: 0.5rem, $col: true);
+            align-items: flex-start;
+            margin-bottom: 1rem;
+
+            label {
+                font-size: 1.125rem;
+            }
+
+            input {
+                width: 300px;
+                padding: 0.5em 1.25em;
+                font-size: 1rem;
+                background-color: #f1f1f1;
+                border-radius: 0.25rem;
+                outline: none;
+                border: none;
+            }
+        }
+
+        button {
+            margin-top: 0.25rem;
+            width: 100%;
+        }
+
+        .signup-link {
+            display: block;
+            margin-top: 1.25rem;
+            color: black;
+            text-decoration: none;
+            text-align: center;
+
+            span {
+                color: $primary;
+            }
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
     }
+}
 
-    .credentials input {
-        border: none;
-        outline: none;
-        background: none;
-        font-size: 18px;
-        color: #642da8;
-        width: 100%;
-        padding: 0.4em 0.6rem;
-        letter-spacing: 1px;
-    }
-
-    .username {
-        @include flex($pos: null);
-        margin-bottom: 20px;
-        border-bottom: 2px solid #c2c4c3;
-        transition: 0.3s ease-in-out;
-    }
-
-    .username:hover {
-        border-bottom: 2px solid #642da8;
-    }
-
-    .password {
-        @include flex($pos: null);
-        margin-bottom: 30px;
-        border-bottom: 2px solid #c2c4c3;
-        transition: 0.3s ease-in-out;
-    }
-
-    .password:hover {
-        border-bottom: 2px solid #642da8;
-    }
-
-    .submit {
-        outline: none;
-        border: none;
-        width: 100%;
-        border-radius: 30px;
-        color: #fff;
-        font-size: 20px;
-        font-weight: 700;
-        text-align: center;
-        background-image: linear-gradient(to right, #642da8 0%, #29323c 51%, #485563 100%);
-        background-size: 200%;
-        box-shadow: 3px 3px 8px #b1b1b1, -3px -3px 8px #fff;
-        transition: .5 ease;
-
-    }
-
-    .submit:hover {
-        background-position: right;
-
-    }
-
-    .link {
-        margin: 20px;
-        text-align: center;
-    }
-
-    .link a {
-        color: rgb(247, 124, 42);
-        font-size: 15px;
-        text-decoration: none;
+@media screen and (max-width: 800px) {
+    .login .form-container img {
+        display: none;
     }
 }

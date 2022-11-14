@@ -1,15 +1,26 @@
+.account-container {
+    background-color: white;
+    min-height: 100vh;
+    padding: 2rem $padding-inline;
+
+    .back-btn {
+        @include flex($gap: 0.5rem);
+        margin-bottom: 2rem;
+    }
+}
+
 .account {
-    max-width: 1440px;
-    width: 90%;
-    margin: auto;
-    margin-top: 2rem;
-    border: 2px solid black;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    width: 100%;
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 0px 50px -12px rgb(0 0 0 / 0.25);
 
     .resume-section-header {
         @include flex($pos: null, $gap: 1rem);
+        margin-bottom: 2rem;
 
         .btn {
             margin-top: 0;
@@ -32,12 +43,14 @@
     .resume-heading {
         margin: 0 2rem;
     }
+}
 
+.account-details {
     .resume-list {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
-        gap: 2rem;
-        margin: 2rem;
+        gap: 4rem;
+        margin-top: 4rem;
     }
 
     .resume-list>div {
@@ -64,9 +77,12 @@
     .card {
         @include flex;
         background-color: white;
-        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.3);
+        box-shadow: 0 0px 50px -6px rgb(0 0 0 / 0.25);
+        border-radius: 0.5rem;
+        overflow: hidden;
 
         &>div:first-child {
+            padding: 2rem;
             background-color: $primary;
         }
 
@@ -81,6 +97,7 @@
             }
 
             .resume-qr {
+                margin-top: 2rem;
                 height: 200px;
                 aspect-ratio: 1;
             }
@@ -113,7 +130,7 @@
     @include flex($gap: 1rem, $col: true);
     height: 100vh;
 
-    button:hover {
-        background-color: rgb(249, 249, 249);
+    button {
+        @include flex($gap: 0.5rem);
     }
 }

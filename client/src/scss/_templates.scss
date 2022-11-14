@@ -2,6 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;200;300;400;500;600;700;800&display=swap');
 
 .template {
+  background-color: white;
+
   .main {
     display: flex;
     justify-content: center;
@@ -9,99 +11,32 @@
     flex-wrap: wrap;
     min-height: 100vh;
     width: 100%;
+
+    .back-btn {
+      @include flex($gap: 0.5rem);
+      position: absolute;
+      top: 2rem;
+      left: 8rem;
+    }
   }
 
   .heading {
+    margin-top: 2rem;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    height: 9vh;
+    height: 3rem;
   }
 
   .sub-heading {
     width: 100%;
     display: flex;
     justify-content: center;
-    height: 9vh;
-
+    height: 1.5rem;
+    margin-top: 0.75rem;
+    margin-bottom: 2rem;
   }
-
-  // .container {
-  //   display: flex;
-  //   justify-content: center;
-  //   align-items: center;
-  //   flex-wrap: wrap;
-  //   max-width: 1200px;
-  //   min-height: 100vh;
-  //   margin: 40px 0;
-  // }
-
-  // .card {
-  //   position: relative;
-  //   min-width: 320px;
-  //   height: 440px;
-  //   box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.2),
-  //     inset -5px -5px 15px rgba(255, 255, 255, 0.1),
-  //     5px 5px 15px rgba(0, 0, 0, 0.3), -5px -5px 15px rgba(255, 255, 255, 0.1);
-  //   border-radius: 15px;
-  //   margin: 30px;
-  //   transition: 0.5s;
-  // }
-
-  .card:nth-child(1) .box .content a {
-    background: #2196f3;
-  }
-
-  .card:nth-child(2) .box .content a {
-    background: #e91e63;
-  }
-
-  .card:nth-child(3) .box .content a {
-    background: #23c186;
-  }
-
-  .box {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    right: 20px;
-    bottom: 20px;
-    background: #2a2b2f;
-    border-radius: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    transition: 0.5s;
-  }
-
-  .box:hover {
-    transform: translateY(-50px);
-  }
-
-  .box:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 50%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.03);
-  }
-
-  .box .content {
-    padding: 20px;
-    text-align: center;
-  }
-
-  // .content h2 {
-  //   position: absolute;
-  //   top: -10px;
-  //   right: 30px;
-  //   font-size: 8rem;
-  //   color: rgba(255, 255, 255, 0.1);
-  // }
 
   .content h3 {
     font-size: 1.8rem;
@@ -132,10 +67,6 @@
     transition: 0.5s;
   }
 
-  // .main {
-  //   padding-inline: 5rem;
-  // }
-
   .container {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
@@ -145,8 +76,12 @@
 
   .card {
     @include flex;
+    width: 80vw;
     background-color: white;
-    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0px 50px -6px rgb(0 0 0 / 0.25);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    margin-bottom: 2rem;
 
     &>div:first-child {
       background-color: $primary;
@@ -174,10 +109,4 @@
       color: black;
     }
   }
-
-  // .btn:hover {
-  //   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
-  //   background: #fff;
-  //   color: #000;
-  // }
 }
