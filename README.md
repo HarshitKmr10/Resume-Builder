@@ -5,4 +5,6 @@ A user can choose from a wide variety of pre-defined templates which helps user 
 1) Login/Sign Up into your profile.<br>
 2) Go to build your resume.<br>
 3) Use Text/Shape/Image to create your own resume.<br>
-4) You can also make use Copy and Edit option to create your own copy of a public resume. <br>
+4) You can also make use Copy and Edit option to create your own copy of a public resume. <br><hr><br>
+## Website
+Here's the link for the website : https://resume-builder-ineuron.netlify.app/
