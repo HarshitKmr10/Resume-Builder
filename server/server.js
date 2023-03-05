@@ -7,12 +7,6 @@ const path = require('path');
 
 const app = express();
 
-const corsOptions = {
-    origin : '*',
-    credentials: true,
-    optionSuccessStatus: 200
-}
-
 //connecting to the database
 connectDB()
 
@@ -28,9 +22,6 @@ app.use(express.json({extended: false}));
 app.use(fileUpload());
 app.use('/qrcode', express.static(path.join(__dirname, "qrcodes")));
 app.use('/upload', express.static(path.join(__dirname, "uploads")));
-
-//cors 
-app.use(cors(corsOptions))
 
 app.get("/", (req, res)=> console.log("API running"))
 
