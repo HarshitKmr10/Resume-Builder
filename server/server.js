@@ -13,9 +13,9 @@ connectDB()
 const clientUrl = config.get("clientURL");
 
 app.use(cors({
-  origin: '*',
+  origin: clientUrl,
   optionSuccessStatus: 200,
-  credentials: true
+  // credentials: true
 }))
 
 //Init middleware

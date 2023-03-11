@@ -16,7 +16,7 @@ function Login() {
 		e.preventDefault();
 
 		try {
-			const response = await axios.post(process.env.REACT_APP_URL + "/auth", {
+			const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}auth`, {
 				"email": credentials.email,
 				"password" : credentials.password
 			})
