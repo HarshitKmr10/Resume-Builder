@@ -8,7 +8,7 @@ import Account from "./components/Account";
 import Templates from "./components/Templates";
 import ResumeProvider from "./contexts/ResumeProvider";
 import UserProvider from "./contexts/UserProvider";
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
   return (
     <UserProvider>
