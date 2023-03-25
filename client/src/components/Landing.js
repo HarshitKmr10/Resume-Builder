@@ -7,7 +7,7 @@ import { Alert } from 'react-bootstrap';
 function Landing() {
 	const navigate = useNavigate();
 	const { user, setUser } = useUser();
-	const [success, setSuccess] = useState(true)
+	const [loginSuccess, setloginSuccess] = useState({})
 
 	function signOut() {
 		localStorage.removeItem('user');
@@ -16,7 +16,7 @@ function Landing() {
 	}
 
 	function handleClose() {
-		setSuccess(false)
+		setloginSuccess(false)
 	}
 
 	return (
@@ -41,7 +41,7 @@ function Landing() {
 				</ul>
 			</nav>
 			{
-				user && success && (
+				user && loginSuccess && (
 					<Alert variant='success'>
 						Successfully LoggedIn!
 						<button style={{ float: 'right' }} type="button" className="btn-close" data-dismiss="alert" aria-label="Close" onClick={handleClose}></button>
