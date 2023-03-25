@@ -12,7 +12,7 @@ const UserProvider = ({ children }) => {
   useEffect(() => {
     const user = localStorage.getItem("user");
     if (!user) return;
-
+  
     setUser(JSON.parse(user));
     // eslint-disable-next-line
   }, [])

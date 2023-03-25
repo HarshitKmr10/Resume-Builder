@@ -1,15 +1,22 @@
 import React from 'react'
 import { useNavigate } from "react-router-dom"
 import { useUser } from "../contexts/UserProvider"
+import { useState } from 'react';
+import { Alert } from 'react-bootstrap';
 
 function Landing() {
 	const navigate = useNavigate();
 	const { user, setUser } = useUser();
+	const [loginSuccess, setloginSuccess] = useState({})
 
 	function signOut() {
 		localStorage.removeItem('user');
 		localStorage.removeItem('token');
 		setUser(null);
+	}
+
+	function handleClose() {
+		setloginSuccess(false)
 	}
 
 	return (
@@ -22,7 +29,7 @@ function Landing() {
 							<>
 								<button className='btn'
 									onClick={() => navigate(`/${user.username}`)}>{user.username}</button>
-									<button className='btn btn-primary' onClick={signOut}>Sign out</button>
+								<button className='btn btn-primary' onClick={signOut}>Sign out</button>
 							</> :
 							<>
 								<button className="sign-in btn btn-secondary" onClick={() => navigate("/login")}>Log in</button>
@@ -33,7 +40,14 @@ function Landing() {
 					}
 				</ul>
 			</nav>
-
+			{
+				user && loginSuccess && (
+					<Alert variant='success'>
+						Successfully LoggedIn!
+						<button style={{ float: 'right' }} type="button" className="btn-close" data-dismiss="alert" aria-label="Close" onClick={handleClose}></button>
+					</Alert>
+				)
+			}
 			<div className="main-content" id="slide">
 				<div className="main-intro">
 					<h1>Build your <span>QR Code Based</span> resume from scratch</h1>
@@ -44,7 +58,7 @@ function Landing() {
 				</div>
 
 				<button className="btn btn-primary" onClick={() => navigate("/chaitanyagiri/633187b807ef40871f00762a")}
-				style={{ marginRight: "1.5rem" }}
+					style={{ marginRight: "1.5rem" }}
 				>Build your resume</button>
 				<button className="btn btn-secondary" onClick={() => navigate("/templates")}>Browse Templates</button>
 			</div>
