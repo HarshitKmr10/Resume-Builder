@@ -12,10 +12,10 @@ connectDB()
 
 const clientUrl = config.get("clientURL");
 
-app.use(cors({
-  origin: clientUrl,
-  optionSuccessStatus: 200
-}))
+//app.use(cors({
+//  origin: clientUrl,
+//  optionSuccessStatus: 200
+//}))
 
 //Init middleware
 app.use(express.json({extended: false}));
